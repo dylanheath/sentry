@@ -1,0 +1,96 @@
+.portfolio-component {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.portfolio-component-header-container {
+	display: flex;
+    justify-content: space-between;
+}
+
+p{
+  margin:0;
+}
+
+.portfolio-component-header {
+	font-size: 22px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+}
+
+.portfolio-component-more-header {
+  color: #ea5e1b;
+  text-decoration: underline;
+  transition: .5s;
+}
+
+.portfolio-component-more-header:hover {
+   color: #b34714;
+   transition: .5s;
+}
+
+.portfolio-component-balance-container {
+  display: flex;
+  padding-top: 30px;
+}
+
+.portfolio-component-balance {
+	font-size: 34px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+}
+
+.portfolio-component-balance-tag {
+  font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    color: #3d3d3d;
+    padding-left: 4px;
+}
+
+.portfolio-component-balance-amount {
+	font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    color: #3d3d3d;
+    padding-left: 4px;
+    padding-top: 4px;
+}
+
+.portfolio-component-button-container {
+	display: flex;
+	width: 114px;
+	padding-top: 20px;
+	justify-content: space-between;
+}
+
+.portfolio-component-button {
+display: flex;
+    align-items: center;
+    grid-gap: 6px;
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #d8d8d8;
+    background:none;
+    padding: 0 12px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .2s ease;
+    text-decoration: none;
+    transition: .5s;
+    border: 1px solid #3d3d3d ;
+}
+
+.portfolio-component-button:hover {
+	color: #3d3d3d;
+}
+
+.home-header-description-container {
+  padding-top: 40px;
+}

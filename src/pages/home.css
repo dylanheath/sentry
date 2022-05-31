@@ -1,0 +1,31 @@
+.Home {
+text-align: left;
+}
+
+.home-header {
+    color: #d8d8d8;
+    font-size: 28px;
+}
+
+.home-description {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-top: 4px;
+    color: #3d3d3d;
+}
+
+.Top-container {
+display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    grid-gap: 16px;
+    margin-top: 30px;
+}
+
+.Middle-container {
+
+}
+
+.Bottom-container {
+
+}

@@ -20,6 +20,8 @@ import {contextfields} from './utils/context/contextfields';
 // utils
 import {cen_node} from './utils/nodes/cen';
 
+// wallet 
+
 function App() {
   const [User, setUser] = useState<contextfields>({name: null, email: null, address: null, contacts: null, status: false });
   const context = useContext(UserContext);
