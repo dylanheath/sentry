@@ -72,7 +72,7 @@ color: #d8d8d8;
 }
 
 .analytics-component-all-time {
-font-size: 24px;
+	    font-size: 36px;
     line-height: 1;
     font-weight: 600;
     color: #d8d8d8;
@@ -143,6 +143,10 @@ font-size: 24px;
     flex-direction: column;
 }
 
+.market-component-prices-box:hover {
+background:#212121 ;
+}
+
 .market-component-prices-header-container {
 	display: flex;
 	flex-direction: row;
@@ -205,5 +209,30 @@ font-size: 17px;
 
  .market-component-price-change-container {
   display: flex;
+ }
+
+ .market-component-price-more-container {
+	 display: flex;
+    line-height: 1;
+    font-weight: 600;
+        color: #d8d8d8;
+   text-align: right;
+   align-items: center;
+   margin-left: auto;
+margin-right: 0;
+ }
+
+ .market-component-more-header {
+      color: rgb(70, 70, 70);
+    text-decoration: underline;
+    transition: .5s;
+    padding-right: 10px;
+ }
+
+ .market-component-more-header:hover {
+color: #b34714;
+ }
+
+ .market-component-more-image-container {
  }
 
