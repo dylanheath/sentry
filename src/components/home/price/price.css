@@ -1,0 +1,209 @@
+.price-component {
+background: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.price-component-real-time-header {
+	    color: #d8d8d8;
+    transition: .5s;
+}
+
+.price-component-price-container {
+	display: flex;
+    padding-top: 24px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price-component-price-tag {
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+    padding-left: 10px;
+}
+
+.price-component-price-name {
+	    font-size: 24px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+}
+
+.price-component-price {
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+    padding-right: 4px;
+}
+
+.price-component-price-percent-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.price-component-price-change-container {
+	    display: flex;
+    align-items: center;
+    grid-gap: 2px;
+    padding: 2px 6px 2px 4px;
+    border-radius: 6px;
+    border: 1px solid #3d3d3d;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 500;
+    color: rgb(70, 70, 70);
+}
+
+.price-component-price-change {
+color: #d8d8d8;
+}
+
+.analytics-component-all-time-container {
+	display: flex;
+    padding-top: 24px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.analytics-component-all-time {
+font-size: 24px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+}
+
+.analytics-component-all-time-tag {
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+}
+
+.analytics-component-all-time-tag-container {
+	    display: flex;
+    align-items: center;
+    grid-gap: 2px;
+    padding: 2px 6px 2px 4px;
+    border-radius: 6px;
+    border: 1px solid #3d3d3d;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 500;
+    color: rgb(70, 70, 70);
+}
+
+.analytics-component-all-time-change-tag {
+	font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    color: #3d3d3d;
+    padding-top: 12px;
+}
+
+.analytics-component-all-time-change {
+	    font-size: 24px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+    padding-top: 10px;
+}
+
+.market-component-prices-container {
+    padding-top: 20px;
+    width: 100%;
+    display: grid;
+    grid-gap: 14px;
+    grid-gap: 14px;
+    gap: 14px;
+    grid-template-columns: repeat(1,1fr); 
+}
+
+.market-component-prices-box {
+    display: flex;
+    align-items: left;
+    grid-gap: 6px;
+    grid-gap: 6px;
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #d8d8d8;
+    background: none;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all .2s ease;
+    text-decoration: none;
+    transition: .5s;
+    border: 1px solid #3d3d3d;
+    flex-direction: column;
+}
+
+.market-component-prices-header-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.market-component-prices-name {
+	font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+}
+
+.market-component-price {
+font-size: 17px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+    padding-right: 10px;
+}
+
+.market-component-price-update-status {
+  width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(26,161,104,.15);
+    border: 1px solid rgba(26,161,104,.15);
+}
+
+.market-component-price-update-status-container {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ }
+
+ .market-component-price-update-status-wrapper {
+	     display: flex;
+    align-items: center;
+    grid-gap: 2px;
+    padding: 4px 4px 4px 4px;
+    border-radius: 6px;
+    border: 1px solid #3d3d3d;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 500;
+    color: rgb(70, 70, 70);
+ }
+
+ .market-component-price-change-wrapper {
+    display: flex;
+    padding: 2px 6px 2px 4px;
+    border-radius: 6px;
+    border: 1px solid #3d3d3d;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 500;
+    color: rgb(70, 70, 70);
+ }
+
+ .market-component-price-change-container {
+  display: flex;
+ }
+
