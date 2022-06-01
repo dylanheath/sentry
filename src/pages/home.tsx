@@ -7,6 +7,9 @@ import './home.css';
 import Balance from '../components/home/portfolio/balance';
 import Assets from '../components/home/portfolio/assets';
 import Tokens from '../components/home/portfolio/tokens';
+import Price from '../components/home/price/price';
+import Analytics from '../components/home/price/analytics';
+import Market from '../components/home/price/market';
 
 export default function Home() {
   
@@ -24,6 +27,9 @@ export default function Home() {
         <h2 className="home-description">Track Prices & the Market</h2>
       </div>
       <div className="Middle-container">
+        <Price />
+	<Analytics />
+	<Market />
       </div>
       <div className="Bottom-container">
       </div>
