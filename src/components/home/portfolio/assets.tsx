@@ -29,7 +29,10 @@ export default function Assets() {
 	      <p>%</p>
 	    </div>
 	  </div>
-	  <p className="portfolio-component-asset-balance">0</p>
+	  <div className="portfolio-component-asset-balance-container">
+	    <p className="portfolio-component-asset-balance">0</p>
+            <p className="portfolio-component-asset-currency">$0</p>
+	  </div>
 	</div>
         <div className="portfolio-component-asset-box">
 	  <div className="portfolio-component-asset-header-container">
@@ -39,7 +42,10 @@ export default function Assets() {
               <p>%</p>
 	    </div>
 	  </div>
-	  <p className="portfolio-component-asset-balance">0</p>
+	  <div className="portfolio-component-asset-balance-container">
+	    <p className="portfolio-component-asset-balance">0</p>
+	    <p className="portfolio-component-asset-currency">$0</p>
+	  </div>
 	</div>	
         <div className="portfolio-component-asset-box">
 	  <div className="portfolio-component-asset-header-container">
@@ -49,7 +55,10 @@ export default function Assets() {
 	      <p>%</p>
 	    </div>
 	  </div>
-	  <p className="portfolio-component-asset-balance">0</p>
+	  <div className="portfolio-component-asset-balance-container">
+	    <p className="portfolio-component-asset-balance">0</p>
+ 	    <p className="portfolio-component-asset-currency">$0</p>
+	  </div>
 	</div>
 	<div className="portfolio-component-asset-box">
 	  <div className="portfolio-component-asset-header-container">
@@ -59,7 +68,10 @@ export default function Assets() {
 	      <p>%</p>
 	    </div>
 	  </div>
-	  <p className="portfolio-component-asset-balance">0</p>
+	  <div className="portfolio-component-asset-balance-container">
+	    <p className="portfolio-component-asset-balance">0</p>
+ 	    <p className="portfolio-component-asset-currency">$0</p>
+	  </div>
 	</div>
       </div>
     </div>
