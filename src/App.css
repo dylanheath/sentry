@@ -6,6 +6,9 @@ body {
 	background: #121212;
 }
 
+.h1 {
+  margin: 0;
+}
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -109,6 +112,9 @@ display: flex;
     margin: 0 32px 100px 32px;
     padding-top: 40px;
     flex: 1;
+
+        margin: 0 24px 100px 24px;
+    padding-top: 24px;
 }
 
 .app-content {

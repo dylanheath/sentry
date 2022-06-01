@@ -2,11 +2,14 @@
     background: #1a1a1a;
     border-radius: 10px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .portfolio-component-header-container {
 	display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 p{
@@ -21,7 +24,7 @@ p{
 }
 
 .portfolio-component-more-header {
-  color: #ea5e1b;
+  color: #d8d8d8;
   text-decoration: underline;
   transition: .5s;
 }
@@ -33,11 +36,11 @@ p{
 
 .portfolio-component-balance-container {
   display: flex;
-  padding-top: 30px;
+  padding-top: 24px;
 }
 
 .portfolio-component-balance {
-	font-size: 34px;
+	font-size: 36px;
     line-height: 1;
     font-weight: 600;
     color: #d8d8d8;
@@ -49,6 +52,7 @@ p{
     font-weight: 600;
     color: #3d3d3d;
     padding-left: 4px;
+    padding-top: 4px;
 }
 
 .portfolio-component-balance-amount {
@@ -62,7 +66,7 @@ p{
 
 .portfolio-component-button-container {
 	display: flex;
-	width: 114px;
+	width: 116px;
 	padding-top: 20px;
 	justify-content: space-between;
 }
@@ -94,3 +98,93 @@ display: flex;
 .home-header-description-container {
   padding-top: 40px;
 }
+
+.portfolio-component-graph-container {
+padding-top: 40px;
+}
+
+.portfolio-component-divider-container {
+ padding-top: 12px;
+ padding-bottom: 10px;
+}
+
+.portfolio-component-divider {
+border: 1px solid #3d3d3d;
+width: 100%;
+}
+
+.portfolio-component-asset-box {
+display: flex;
+    align-items: left;
+    grid-gap: 6px;
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #d8d8d8;
+    background:none;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all .2s ease;
+    text-decoration: none;
+    transition: .5s;
+    border: 1px solid #3d3d3d ;
+    flex-direction: column;
+    
+}
+
+.portfolio-component-asset-header-container {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.portfolio-component-assets-container {
+	padding-top: 24px;
+	    width: 100%;
+    display: grid;
+    grid-gap: 14px;
+    gap: 14px;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.portfolio-component-asset-header {
+  font-size:15px ;
+}
+
+.portfolio-component-more-container {
+  display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 6px 2px 4px;
+    border-radius: 6px;
+    border: 1px solid #3d3d3d;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 500;
+    color: #d8d8d8;
+}
+
+.portfolio-component-more-container:hover {
+}
+
+.portfolio-component-more-image {
+  width: auto;
+  height: 18px;
+}
+
+.portfolio-component-more-divider {
+height: 8px;
+border: 1px solid #3d3d3d;
+}
+
+.portfolio-component-asset-balance-container {
+  
+}
+
+.portfolio-component-asset-balance {
+	padding-top: 10px;
+	    font-size: 20px;
+}
+
