@@ -15,32 +15,49 @@ export default function Assets() {
 	  <p className="portfolio-component-more-header">More</p>
 	</a>
       </div>
+      <div className="portfolio-component-assets-total-container">
+        <p className="portfolio-component-assets-total">0.00</p>
+	<p className="portfolio-component-balance-tag">XTZ</p>
+      </div>
+      <p className="portfolio-component-balance-amount">$0</p>
       <div className="portfolio-component-assets-container">
         <div className="portfolio-component-asset-box">
 	  <div className="portfolio-component-asset-header-container">
             <p className="portfolio-component-asset-header">XTZ</p>
-	    <p className="portfolio-component-asset-percentage">0%</p>
+	    <div className="portfolio-component-asset-percentage-box">
+	      <p className="portfolio-component-asset-percentage">0</p>
+	      <p>%</p>
+	    </div>
 	  </div>
 	  <p className="portfolio-component-asset-balance">0</p>
 	</div>
         <div className="portfolio-component-asset-box">
 	  <div className="portfolio-component-asset-header-container">
             <p className="portfolio-component-asset-header">Tokens</p>
-            <p className="portfolio-component-asset-percentage">0%</p>
+	    <div className="portfolio-component-asset-percentage-box">
+              <p className="portfolio-component-asset-percentage">0</p>
+              <p>%</p>
+	    </div>
 	  </div>
 	  <p className="portfolio-component-asset-balance">0</p>
 	</div>	
         <div className="portfolio-component-asset-box">
 	  <div className="portfolio-component-asset-header-container">
             <p className="portfolio-component-asset-header">Farms</p>
-            <p className="portfolio-component-asset-percentage">0%</p>
+	    <div className="portfolio-component-asset-percentage-box">
+              <p className="portfolio-component-asset-percentage">0</p>
+	      <p>%</p>
+	    </div>
 	  </div>
 	  <p className="portfolio-component-asset-balance">0</p>
 	</div>
 	<div className="portfolio-component-asset-box">
 	  <div className="portfolio-component-asset-header-container">
             <p className="portfolio-component-asset-header">Liquidity</p>
-            <p className="portfolio-component-asset-percentage">0%</p>
+	    <div className="portfolio-component-asset-percentage-box">
+              <p className="portfolio-component-asset-percentage">0</p>
+	      <p>%</p>
+	    </div>
 	  </div>
 	  <p className="portfolio-component-asset-balance">0</p>
 	</div>
