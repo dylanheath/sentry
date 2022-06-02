@@ -17,6 +17,10 @@ export default function Analytics() {
 	<div className="analytics-component-all-time-tag-container">
 	  <p className="analytics-component-all-time-tag">24</p>
 	  <p>hr</p>
+	  <div className="price-component-divider-container">
+	    <hr className="portfolio-component-more-divider"></hr>
+	  </div>
+	  <p className="analytics-component-all-time-high-tag">high</p>
 	</div>
       </div>
       <p className="analytics-component-all-time-change-tag">change</p>

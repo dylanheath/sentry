@@ -396,7 +396,20 @@ color: #b34714;
  }
 
  .price-component-price-graph-container {
- padding-top: 2px;
+   padding-top: 2px;
  }
+
+
+ .analytics-component-all-time-high-container {
+   display: flex;
+   flex-direction: row;
+ }
+
+ .analytics-component-all-time-high-tag {
+   color: #d8d8d8;
+   font-size: 13px;
+ }
+
+
 
 
