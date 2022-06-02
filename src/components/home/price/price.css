@@ -245,7 +245,7 @@ color: #b34714;
  }
 
  .price-component-price-data-container {
-  padding-top: 24px;
+  padding-top: 14px;
   display: flex;
   flex-direction: column;
  }
@@ -396,7 +396,7 @@ color: #b34714;
  }
 
  .price-component-price-graph-container {
- padding-top: 10px;
+ padding-top: 2px;
  }
 
 

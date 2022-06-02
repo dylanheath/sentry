@@ -82,8 +82,9 @@ export default function Price() {
 	    <div className="market-component-price-update-status-container">
 	      <div className="market-component-price-update-status-wrapper">
 	      <div className="market-component-price-update-status"></div></div></div></div>
+	      <p className="market-component-price-full-name">Tezos</p>
 	    <div className="price-component-price-graph-container">
-              <Sparklines data={[10,10,20,30,60,50,60,120]}>
+              <Sparklines data={[100,10,20,30,60,50,60,120]}>
     	        <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
                 <SparklinesSpots style={{fill: "#b34714"}} />
               </Sparklines>
