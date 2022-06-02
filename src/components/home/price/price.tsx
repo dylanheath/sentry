@@ -27,7 +27,27 @@ export default function Price() {
 	</div>
       </div>
       <div className="price-component-price-data-container">
-
+        <div className="price-component-price-data-box">
+          <p className="price-component-price-market-cap-tag">market cap</p> 
+	  <p className="price-component-price-market-cap">0</p>
+	</div>
+	<div className="price-component-price-data-box-container">
+	  <div className="price-component-price-second-data-box">
+            <p className="price-component-price-market-cap-tag">Circulating Supply</p>
+	    <div className="price-component-data-divider-container">
+              <hr className="price-component-data-divider"></hr>
+	    </div>
+	    <div className="price-component-price-volume-container">
+	      <p className="price-component-price-market-cap">Volume</p>
+	      <div className="price-component-price-data-tag-wrapper">
+	        <div className="price-component-price-change-container">
+	          <p className="price-component-price-change">24</p>
+	          <p>hr</p>
+	         </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
       </div>
     </div>
   )

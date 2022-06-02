@@ -29,6 +29,7 @@ export default function Market() {
 	      </div>
 	    </div>
 	  </div>
+	  <p className="market-component-price-full-name">Bitcoin</p>
 	  <div className="market-component-price-change-container">
 	    <div className="market-component-price-change-wrapper">
 	      <p className="price-component-price-change">0</p>
@@ -36,7 +37,7 @@ export default function Market() {
 	    </div>
 	  </div>
 	  <div className="market-component-price-graph-container">
-            <Sparklines data={[10,10,20,30,60,50,60,120]}>
+            <Sparklines data={[10,10,20,30,60,50,60,120,200,160,170,80]}>
     	      <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
               <SparklinesSpots style={{fill: "#b34714"}} />
             </Sparklines>
@@ -56,6 +57,7 @@ export default function Market() {
 	      </div>
 	    </div>
 	  </div>
+	  <p className="market-component-price-full-name">Ethereum</p>
 	  <div className="market-component-price-change-container">
 	    <div className="market-component-price-change-wrapper">
               <p className="price-component-price-change">0</p>
