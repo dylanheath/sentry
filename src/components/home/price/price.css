@@ -327,9 +327,25 @@ color: #b34714;
  .price-component-price-volume-container {
    display: flex;
    flex-direction: row;
-   align-items: center
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
  }
 
  .price-component-price-data-tag-wrapper {
    padding-left: 10px;
+ }
+
+ .price-component-price-line-container {
+	 display: flex;
+	 flex-direction: row;
+	 align-items: center;
+	 justify-content: space-between;
+ }
+
+ .price-component-data-line-container {
+	 display: flex;
+	 flex-direction: row;
+	 justify-content: space-between; 
+	 align-items: center;
  }
