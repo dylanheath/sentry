@@ -5,7 +5,7 @@ import axios from 'axios';
 import './portfolio.css';
 
 // graph
-import { Sparklines, SparklinesLine } from 'react-sparklines';
+import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
 export default function Balance() {
 
@@ -28,11 +28,19 @@ export default function Balance() {
        <button className="portfolio-component-button">Send</button>
        <button className="portfolio-component-button">Buy</button>
       </div>
-      <div className="portfolio-component-divider-container">
-        <hr className="portfolio-component-divider"></hr>
-      </div>
-      <div className="portfolio-component-transactions">
-        
+      <div className="portfolio-component-graph-balance-container">
+        <div className="portfolio-component-graph-balance-box">
+	  <div className="portfolio-component-balance-tag-container">
+	    <p className="market-component-price-full-name">Last 7 Days</p>
+	    <div className="portfolio-component-status-box">
+	      <div className="portfolio-component-status"></div>
+	    </div>
+	  </div>
+          <Sparklines data={[100,10,20,30,60,50,60,120]}>
+    	     <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
+             <SparklinesSpots style={{fill: "#d8d8d8"}} />
+          </Sparklines> 
+        </div>
       </div>
     </div>
   )

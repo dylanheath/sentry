@@ -4,6 +4,8 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    border: 1px solid #3d3d3d;
+
 }
 
 .portfolio-component-header-container {
@@ -36,7 +38,7 @@ p{
 
 .portfolio-component-balance-container {
   display: flex;
-  padding-top: 24px;
+  padding-top: 27px;
 }
 
 .portfolio-component-balance {
@@ -161,7 +163,7 @@ display: flex;
     gap: 8px;
     padding: 2px 6px 2px 4px;
     border-radius: 6px;
-    border: 1px solid #3d3d3d;
+    background: #212121;
     font-size: 12px;
     line-height: 1;
     font-weight: 500;
@@ -256,13 +258,12 @@ border: 1px solid #3d3d3d;
     line-height: 1.1;
     font-weight: 600;
     color: #d8d8d8;
-    background: none;
     padding: 8px;
     border-radius: 6px;
     transition: all .2s ease;
     text-decoration: none;
-    transition: .5s;
     border: 1px solid #3d3d3d;
+    transition: .5s;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -305,4 +306,59 @@ font-size: 12px;
 
 .portfolio-component-asset-currency {
 	padding-top: 20px;
+}
+
+.portfolio-component-graph-balance-container {
+	padding-top: 14px; 
+}
+
+.portfolio-component-graph-balance-box {
+    display: flex;
+    align-items: left;
+    grid-gap: 6px;
+    grid-gap: 6px;
+    grid-gap: 6px;
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #d8d8d8;
+    background: none;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all .2s ease;
+    text-decoration: none;
+    transition: .5s;
+    border: 1px solid #3d3d3d;
+    flex-direction: column;
+}
+
+.portfolio-component-balance-tag-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.portfolio-component-status {
+	width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(26,161,104,.15);
+    border: 1.2px solid rgba(26,161,104,.15);
+    animation: blinker 2s infinite;
+    transition: .5s;
+}
+
+.portfolio-component-status-box {
+	display: flex;
+    align-items: center;
+    grid-gap: 2px;
+    padding: 4px 4px 4px 4px;
+    border-radius: 6px;
+    border: 1px solid #3d3d3d;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 500;
+    color: rgb(70, 70, 70);
 }

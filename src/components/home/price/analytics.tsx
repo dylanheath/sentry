@@ -13,9 +13,8 @@ export default function Analytics() {
         </a>
       </div>
       <div className="analytics-component-all-time-container">
-        <p className="price-component-price-name">XTZ - USD</p>
+        <p className="price-component-price">$0</p>
 	<div className="analytics-component-all-time-price-container">
-	<p className="price-component-price">$0</p>
 	<div className="analytics-component-all-time-tag-container">
 	  <p className="analytics-component-all-time-tag">0</p>
 	  <p>%</p>
