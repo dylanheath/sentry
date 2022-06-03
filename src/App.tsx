@@ -1,4 +1,4 @@
-import React, { useState, useContext, useMemo } from 'react';
+import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 
@@ -21,11 +21,39 @@ import {contextfields} from './utils/context/contextfields';
 import {cen_node} from './utils/nodes/cen';
 
 // wallet 
+import {connectWallet, disconnectWallet, getActiveAccount, checkIfWalletConnected, getAddress} from
+'./utils/wallet/wallet';
 
 function App() {
   const [User, setUser] = useState<contextfields>({name: null, email: null, address: null, contacts: null, status: false });
   const context = useContext(UserContext);
   const providerValue = useMemo(() => ({ User, setUser }), [User, setUser]);
+  const [active, setActive] = useState<boolean>(false);
+
+  const WalletConnect = async () => {
+    const activeAccount = await getActiveAccount();
+    let myAddress: String | undefined;
+    if (!activeAccount) {
+      const getAddress = await connectWallet();
+      console.log('New connection: ', getAddress);
+      setActive(true);
+   }
+  }
+  const WalletDisconnect = async () => {
+    const disconnectFromCen = await disconnectWallet();
+    console.log('Wallet disconnected');
+    setActive(false);
+  }
+
+  useEffect(() => {
+    const WalletCheck = async () => {
+      const WalletActive = await getActiveAccount();
+      if (WalletActive) {
+        setActive(true);
+      }
+    }
+    WalletCheck();
+  }, [])
   return (
     <div className="App">
       <BrowserRouter>
@@ -50,14 +78,19 @@ function App() {
 		  </a>
 		</div>
 		<div className="app-header-left">
-		  <button className="app-header-button">Connect</button>
+		  {active === false && (
+		    <button className="app-header-button" onClick={WalletConnect}>Connect</button>
+		  )}
+                  {active == true && (
+                    <button className="app-header-button" onClick={WalletDisconnect}>Disconnect</button>
+		  )}
 		</div>
 	      </div>
 	    </header>
 	    <div className="app-page-container">
               <div className="app-content">
                 <Routes>
-	          <Route path="/" element={<Home />} />
+	          <Route path="/" element={<Home activeWallet={active} />} />
 		  <Route path="/trade" element={<Trade />} />
 		  <Route path="/explore" element={<Explore />} />
 	        </Routes>

@@ -4,11 +4,22 @@ import axios from 'axios';
 // styling
 import './portfolio.css';
 
+import { connectWallet, getActiveAccount } from '../../../utils/wallet/wallet';
 // graph
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
-export default function Balance() {
+// utils
+import { balance } from '../../../utils/user/balance';
 
+export default function Balance() {
+  const [balance, setBalance] = useState<number>(0);
+  const [balanceCurrency, setBalanceCurrency] = useState<number>(0);
+
+  useEffect(() => {
+    const getBalance = async () => {
+      const balanceRequest = await balance();	
+    } 
+  },[])
   return (
     <div className="portfolio-component">
       <div className="portfolio-component-header-container">
@@ -20,7 +31,7 @@ export default function Balance() {
 	</a>
       </div> 
       <div className="portfolio-component-balance-container">
-        <p className="portfolio-component-balance">0.00</p>
+        <p className="portfolio-component-balance">{balance == 0 ? "0.00" : balance}</p>
 	<p className="portfolio-component-balance-tag">XTZ</p>
       </div>
       <p className="portfolio-component-balance-amount">$0</p>
@@ -36,7 +47,7 @@ export default function Balance() {
 	      <div className="portfolio-component-status"></div>
 	    </div>
 	  </div>
-          <Sparklines data={[100,10,20,30,60,50,60,120]}>
+          <Sparklines data={[1000,100,10,20,30,60,50,60,120]}>
     	     <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
              <SparklinesSpots style={{fill: "#d8d8d8"}} />
           </Sparklines> 
