@@ -7,24 +7,25 @@ export default function Analytics() {
       <div className="portfolio-component-header-container">
         <p className="portfolio-component-header">Analytics</p>
         <a className="portfolio-component-more-container">
-          <p className="price-component-real-time-header">Real-Time</p>
+	  <hr className="portfolio-component-more-divider"></hr>
+          <p className="price-component-real-time-header">24hr</p>
           <hr className="portfolio-component-more-divider"></hr>
-          <p className="portfolio-component-more-header">More</p>
         </a>
       </div>
       <div className="analytics-component-all-time-container">
-        <p className="analytics-component-all-time">$0</p>
+        <p className="price-component-price-name">XTZ - USD</p>
+	<div className="analytics-component-all-time-price-container">
+	<p className="price-component-price">$0</p>
 	<div className="analytics-component-all-time-tag-container">
-	  <p className="analytics-component-all-time-tag">24</p>
-	  <p>hr</p>
+	  <p className="analytics-component-all-time-tag">0</p>
+	  <p>%</p>
 	  <div className="price-component-divider-container">
 	    <hr className="portfolio-component-more-divider"></hr>
 	  </div>
 	  <p className="analytics-component-all-time-high-tag">high</p>
 	</div>
+	</div>
       </div>
-      <p className="analytics-component-all-time-change-tag">change</p>
-      <p className="analytics-component-all-time-change">0%</p>
     </div>
   )
 }

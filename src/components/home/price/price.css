@@ -410,6 +410,13 @@ color: #b34714;
    font-size: 13px;
  }
 
+ .analytics-component-all-time-price-container {
+	 display: flex;
+	 flex-direction: row;
+	 align-items: center;
+ }
+
+
 
 
 
