@@ -6,9 +6,57 @@ import './price.css';
 // graph
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
+// utils
+import { xtzPrice, xtzSparkline } from '../../../utils/price/xtz';
+
+type xtzDataObj = {
+  ATH: number,
+  ATH_change: number,
+  ATH_date: string,
+  ATL: number,
+  ATL_change: number,
+  ATL_date: string,
+  CircSupply: number,
+  High_24: number,
+  Low_24: number,
+  MarketCap: number,
+  Price: number,
+  PriceChange: number,
+  Price_change: number,
+  Price_change_24: number,
+  Volume: number,
+  ROI: number
+}
+
 export default function Price() {
-
-
+  const [xtzData, setXtzData] = useState<xtzDataObj>({
+	ATH: 0, ATH_change: 0, ATH_date: "", ATL: 0, ATL_change: 0, ATL_date: "",
+        CircSupply: 0, High_24: 0, Low_24: 0, MarketCap: 0, Price: 0, PriceChange: 0,
+        Price_change: 0, Price_change_24: 0, Volume: 0, ROI: 0 }); 
+  const [xtzGraph, setXtzGraph] = useState<Array<number>>([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,]);
+  useEffect(() => {
+    const getPrice = async () => {
+      let priceGraph: Array<number> = [];
+      const priceData = await xtzPrice()
+        .then((result:any) => {
+          setXtzData(result[0]); 
+	})
+	.catch(() => {
+          console.log("failed to get price data");
+        })
+      const sparklineData = await xtzSparkline()
+        .then((result:any) => {
+          setXtzGraph(result.market_data.sparkline_7d.price);
+	})
+	.catch(() => {
+          console.log("failed to get sparkline data");
+	})
+    }
+    getPrice();
+    setInterval(function(){
+        getPrice();
+      },60 * 1000);
+  }, [])
   return (
     <div className="price-component">
       <div className="portfolio-component-header-container">
@@ -22,20 +70,20 @@ export default function Price() {
       <div className="price-component-price-container">
 	<p className="price-component-price-name">XTZ - USD</p>
 	<div className="price-component-price-percent-container">
-          <p className="price-component-price">$0</p>
+          <p className="price-component-price">${xtzData.Price}</p>
 	  <div className="market-component-price-update-status-container"><div className="market-component-price-update-status-wrapper"><div className="market-component-price-update-status"></div></div></div>
 	</div>
       </div>
       <div className="price-component-price-data-container">
         <div className="price-component-price-data-box">
           <p className="price-component-price-market-cap-tag">Market cap</p> 
-	  <p className="price-component-price-market-cap">0</p>
+	  <p className="price-component-price-market-cap">{(xtzData.MarketCap).toLocaleString()}</p>
 	</div>
 	<div className="price-component-price-data-box-container">
 	  <div className="price-component-price-second-data-box">
 	    <div className="price-component-data-line-container">
               <p className="price-component-price-market-cap-tag">Circulating Supply</p>
-	      <p className="price-component-price-market-cap">0</p>
+	      <p className="price-component-price-market-cap">{xtzData.CircSupply}</p>
 	    </div>
 	    <div className="price-component-data-divider-container">
               <hr className="price-component-data-divider"></hr>
@@ -50,7 +98,7 @@ export default function Price() {
 	         </div>
 	      </div>
 	      </div>
-	      <p className="price-component-price-market-cap">0</p>
+	      <p className="price-component-price-market-cap">${(xtzData.Volume).toLocaleString()}</p>
 	    </div>
 	    <div className="price-component-data-divider-container">
               <hr className="price-component-data-divider"></hr>
@@ -64,7 +112,7 @@ export default function Price() {
 	         </div>
 	      </div>
 	      </div>
-	      <p className="price-component-price-market-cap">0%</p>
+	      <p className="price-component-price-market-cap">{(xtzData.ROI).toFixed(2)}%</p>
 	    </div>
 	  </div>
 	</div>
@@ -77,7 +125,7 @@ export default function Price() {
 	      <div className="market-component-price-update-status"></div></div></div></div>
 	      <p className="market-component-price-full-name">Tezos</p>
 	    <div className="price-component-price-graph-container">
-              <Sparklines data={[100,10,20,30,60,50,60,120]}>
+              <Sparklines data={xtzGraph} limit={24}>
     	        <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
                 <SparklinesSpots style={{fill: "#d8d8d8"}} />
               </Sparklines>

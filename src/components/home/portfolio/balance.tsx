@@ -10,13 +10,23 @@ import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
 // utils
 import { balance, balanceGraph} from '../../../utils/user/balance';
+import { xtzPrice } from '../../../utils/price/xtz';
 
 export default function Balance() {
-  const [balanceXTZ, setBalanceXTZ] = useState<number | undefined>(0);
+  const [balanceXTZ, setBalanceXTZ] = useState<number>(0);
   const [balanceGraphData, setBalanceGraphData] = useState<Array<number>>([1,1,1,1,1,1,1,1,1]);
   const [balanceCurrency, setBalanceCurrency] = useState<number>(0);
 
   useEffect(() => {
+    const getPrice = async () => {
+      const price = await xtzPrice() 
+        .then((result:any) => {
+          setBalanceCurrency(result[0].Price); 
+        })
+	.catch(() => {
+          console.log("failed to get price");
+	})
+    }
     const getBalance = async () => {
       const activeAccount = await getActiveAccount();
       let myAddress: String | undefined;
@@ -42,7 +52,12 @@ export default function Balance() {
 	  })
       } 
     }
+    getPrice();
     getBalance();
+    setInterval(function(){
+        getPrice();
+	getBalance();
+      },60 * 1000);
   },[])
   return (
     <div className="portfolio-component">
@@ -58,7 +73,7 @@ export default function Balance() {
         <p className="portfolio-component-balance">{balanceXTZ == 0 || null || undefined ? "0.00" : balanceXTZ}</p>
 	<p className="portfolio-component-balance-tag">XTZ</p>
       </div>
-      <p className="portfolio-component-balance-amount">$0</p>
+      <p className="portfolio-component-balance-amount">${(balanceCurrency * balanceXTZ).toFixed(2)}</p>
       <div className="portfolio-component-button-container">
        <button className="portfolio-component-button">Send</button>
        <button className="portfolio-component-button">Buy</button>
