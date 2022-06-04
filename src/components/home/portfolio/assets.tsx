@@ -3,8 +3,62 @@ import React, {useEffect, useState} from 'react';
 // styling
 import './portfolio.css';
 
-export default function Assets() {
+// wallet
+import { getActiveAccount, getAddress } from '../../../utils/wallet/wallet';
 
+// utils
+import { xtzPrice } from '../../../utils/price/xtz';
+import { balance } from '../../../utils/user/balance';
+import { tokens } from '../../../utils/user/tokens';
+import { tokensList } from '../../../utils/user/tokensList';
+
+export default function Assets() {
+  const [total, setTotal] = useState<number>(0);
+  const [totalCurrency, setTotalCurrency] = useState<number>(0);
+  const [userTokens , setUserTokens] = useState<number>(0);
+  const [allTokens, setAllTokens] = useState<Array<string>>();
+  const [price, setPrice] = useState<number>(0); 
+  const [xtzBalance, setXtzBalance] = useState<number>(0);
+
+  useEffect(() => {
+    const getAssetsUtils = async () => {
+      const activeAccount = await getActiveAccount();
+      let myAddress: String;
+      const address = await getAddress();	
+      if (activeAccount) {
+        const getBalance= await balance(address)
+	  .then((result:any) => {
+            setXtzBalance(result / 1000000);
+          })
+	  .catch(() => {
+            console.log("failed to get balance");
+	  })
+      }
+      const price = await xtzPrice() 
+        .then((result:any) => {
+          setPrice(result[0].Price); 
+        })
+	.catch(() => {
+          console.log("failed to get price");
+	})
+      const getTokensList = await tokensList()
+        .then((result:any) => {
+          setAllTokens(result);
+        })
+        .catch(() => {
+          console.log("failed to get all tokens");
+	})
+      const getTokens = await tokens(address) 
+        .then((result:any) => {
+          setUserTokens(result); 
+        })
+        .catch(() => {
+          console.log("failed to get user tokens"); 
+        })
+
+    }
+    getAssetsUtils();
+  }, [price, xtzBalance])
   return (
     <div className="portfolio-component">
       <div className="portfolio-component-header-container">
@@ -30,8 +84,8 @@ export default function Assets() {
 	    </div>
 	  </div>
 	  <div className="portfolio-component-asset-balance-container">
-	    <p className="portfolio-component-asset-balance">0</p>
-            <p className="portfolio-component-asset-currency">$0</p>
+	    <p className="portfolio-component-asset-balance">{(xtzBalance).toFixed(2)}</p>
+            <p className="portfolio-component-asset-currency">${(price * xtzBalance).toFixed(2)}</p>
 	  </div>
 	</div>
         <div className="portfolio-component-asset-box">
