@@ -124,6 +124,12 @@ export default function Price() {
 	      <div className="market-component-price-update-status-wrapper">
 	      <div className="market-component-price-update-status"></div></div></div></div>
 	      <p className="market-component-price-full-name">Tezos</p>
+	      <div style={{display: "flex"}}>
+	      <div className="market-component-price-change-wrapper">
+	        <p className="price-component-price-change">{(xtzData.PriceChange).toFixed(2)}</p>
+	      <p>%</p>
+	      </div>
+	      </div>
 	    <div className="price-component-price-graph-container">
               <Sparklines data={xtzGraph} limit={24}>
     	        <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />

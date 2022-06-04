@@ -6,8 +6,49 @@ import './price.css';
 // graph 
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
-export default function Market() {
+// utils
+import { btcPrice } from '../../../utils/price/btc';
+import { ethPrice } from '../../../utils/price/eth';
 
+type coinData = {
+  price: number,
+  sparkline: Array<number>
+  change: number
+}
+
+export default function Market() {
+  const [btcData, setBtcData] = useState<coinData>({price: 0, sparkline: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], change: 0});
+  const [ethData, setEthData] = useState<coinData>({price: 0, sparkline: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], change: 0});
+  useEffect(() =>{
+    const getPrices = async () => {
+     const getBtcPrice = await btcPrice()
+       .then((result:any) => {
+         const marketObj = {
+	   price: result.market_data.current_price.usd,
+           sparkline: result.market_data.sparkline_7d.price,
+	   change: result.market_data.price_change_percentage_7d
+         }
+         setBtcData(marketObj); 
+       })
+       .catch(() => {
+         console.log("failed to get btc data");
+       })
+
+     const getEthPrice = await ethPrice()
+       .then((result:any) => {
+         const marketObj = {
+	   price: result.market_data.current_price.usd,
+           sparkline: result.market_data.sparkline_7d.price,
+	   change: result.market_data.price_change_percentage_7d
+         }
+         setEthData(marketObj);
+       })
+       .catch(() => {
+         console.log("failed to get eth data"); 
+       })
+    }
+    getPrices();
+  })
   return (
     <div className="price-component">
       <div className="portfolio-component-header-container">
@@ -23,7 +64,7 @@ export default function Market() {
           <div className="market-component-prices-header-container">
             <p className="market-component-prices-name">BTC - USD</p>
 	    <div className="market-component-price-update-status-container">
-	      <p className="market-component-price">$0</p>
+	      <p className="market-component-price">${(btcData.price).toLocaleString()}</p>
 	      <div className="market-component-price-update-status-wrapper">
                 <div className="market-component-price-update-status"></div>
 	      </div>
@@ -32,12 +73,12 @@ export default function Market() {
 	  <p className="market-component-price-full-name">Bitcoin</p>
 	  <div className="market-component-price-change-container">
 	    <div className="market-component-price-change-wrapper">
-	      <p className="price-component-price-change">0</p>
+	      <p className="price-component-price-change">{(btcData.change).toFixed(2)}</p>
 	      <p>%</p>
 	    </div>
 	  </div>
 	  <div className="market-component-price-graph-container">
-            <Sparklines data={[10,10,20,30,60,50,60,120,200,160,170,80]}>
+            <Sparklines data={btcData.sparkline}>
     	      <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
               <SparklinesSpots style={{fill: "#d8d8d8"}} />
             </Sparklines>
@@ -51,7 +92,7 @@ export default function Market() {
           <div className="market-component-prices-header-container">
             <p className="market-component-prices-name">ETH - USD</p>
 	    <div className="market-component-price-update-status-container">
-	      <p className="market-component-price">$0</p>
+	      <p className="market-component-price">${(ethData.price).toLocaleString()}</p>
 	      <div className="market-component-price-update-status-wrapper">
                 <div className="market-component-price-update-status"></div>
 	      </div>
@@ -60,12 +101,12 @@ export default function Market() {
 	  <p className="market-component-price-full-name">Ethereum</p>
 	  <div className="market-component-price-change-container">
 	    <div className="market-component-price-change-wrapper">
-              <p className="price-component-price-change">0</p>
+              <p className="price-component-price-change">{(ethData.change).toFixed(2)}</p>
 	      <p>%</p>
 	    </div>
 	  </div>
 	  <div className="market-component-price-graph-container">
-	    <Sparklines data={[10,10,20,30,60,50,60,120]}>
+	    <Sparklines data={ethData.sparkline}>
     	      <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
               <SparklinesSpots style={{fill: "#d8d8d8"}} />
             </Sparklines>
