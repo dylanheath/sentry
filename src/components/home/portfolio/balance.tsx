@@ -4,21 +4,45 @@ import axios from 'axios';
 // styling
 import './portfolio.css';
 
-import { connectWallet, getActiveAccount } from '../../../utils/wallet/wallet';
+import { connectWallet, getActiveAccount, getAddress } from '../../../utils/wallet/wallet';
 // graph
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
 // utils
-import { balance } from '../../../utils/user/balance';
+import { balance, balanceGraph} from '../../../utils/user/balance';
 
 export default function Balance() {
-  const [balance, setBalance] = useState<number>(0);
+  const [balanceXTZ, setBalanceXTZ] = useState<number | undefined>(0);
+  const [balanceGraphData, setBalanceGraphData] = useState<Array<number>>([1,1,1,1,1,1,1,1,1]);
   const [balanceCurrency, setBalanceCurrency] = useState<number>(0);
 
   useEffect(() => {
     const getBalance = async () => {
-      const balanceRequest = await balance();	
-    } 
+      const activeAccount = await getActiveAccount();
+      let myAddress: String | undefined;
+      let balanceGraphArray: Array<number> = [];
+      if (activeAccount) {
+        const address = await getAddress();	
+        const balanceRequest = await balance(address)
+	.then((result:any) => {
+          setBalanceXTZ(result / 1000000);
+	})
+	.catch(() => {
+           console.log("failed to get balance");
+	})
+	const balanceGraphRequest = await balanceGraph(address)
+	  .then((result:any) => {
+	    result.map((balance:any) => {
+              balanceGraphArray.push(balance.balance / 1000000); 
+	    })
+            setBalanceGraphData(balanceGraphArray);
+	  })
+	  .catch(() => {
+            console.log("failed to get graph data");
+	  })
+      } 
+    }
+    getBalance();
   },[])
   return (
     <div className="portfolio-component">
@@ -31,7 +55,7 @@ export default function Balance() {
 	</a>
       </div> 
       <div className="portfolio-component-balance-container">
-        <p className="portfolio-component-balance">{balance == 0 ? "0.00" : balance}</p>
+        <p className="portfolio-component-balance">{balanceXTZ == 0 || null || undefined ? "0.00" : balanceXTZ}</p>
 	<p className="portfolio-component-balance-tag">XTZ</p>
       </div>
       <p className="portfolio-component-balance-amount">$0</p>
@@ -47,7 +71,7 @@ export default function Balance() {
 	      <div className="portfolio-component-status"></div>
 	    </div>
 	  </div>
-          <Sparklines data={[1000,100,10,20,30,60,50,60,120]}>
+          <Sparklines data={balanceGraphData} limit={7}>
     	     <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
              <SparklinesSpots style={{fill: "#d8d8d8"}} />
           </Sparklines> 
