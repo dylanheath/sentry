@@ -44,6 +44,7 @@ export default function Assets() {
       const getTokensList = await tokensList()
         .then((result:any) => {
           setAllTokens(result);
+	  console.log(result);
         })
         .catch(() => {
           console.log("failed to get all tokens");
@@ -58,7 +59,7 @@ export default function Assets() {
 
     }
     getAssetsUtils();
-  }, [price, xtzBalance])
+  }, [])
   return (
     <div className="portfolio-component">
       <div className="portfolio-component-header-container">

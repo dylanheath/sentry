@@ -51,7 +51,7 @@ export default function Market() {
     setInterval(function(){
         getPrices();
       },60 * 1000);
-  })
+  }, [])
   return (
     <div className="price-component">
       <div className="portfolio-component-header-container">
