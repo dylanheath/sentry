@@ -10,18 +10,25 @@ import { getActiveAccount, getAddress } from '../../../utils/wallet/wallet';
 import { xtzPrice } from '../../../utils/price/xtz';
 import { balance } from '../../../utils/user/balance';
 import { tokens } from '../../../utils/user/tokens';
-import { tokensList } from '../../../utils/user/tokensList';
+
+type tokensObj = {
+  tokens: Array<any>,
+  list: Array<any>
+}
 
 export default function Assets() {
   const [total, setTotal] = useState<number>(0);
   const [totalCurrency, setTotalCurrency] = useState<number>(0);
-  const [userTokens , setUserTokens] = useState<Array<string>>();
-  const [allTokens, setAllTokens] = useState<Array<any>>();
+  const [userTokens , setUserTokens] = useState<tokensObj>({tokens: [], list: []});
   const [price, setPrice] = useState<number>(0); 
   const [xtzBalance, setXtzBalance] = useState<number>(0);
+  const [xtzTokens , setXtzTokens] = useState<number>(0);
+  const [tokenCurrency, setTokensCurrency] = useState<number>(0);
 
   useEffect(() => {
     const getAssetsUtils = async () => {
+      let CurrencyTotal: number = totalCurrency;
+      let TokensTotalCurrency: number = total;
       const activeAccount = await getActiveAccount();
       let myAddress: String;
       const address = await getAddress();	
@@ -41,35 +48,26 @@ export default function Assets() {
 	.catch(() => {
           console.log("failed to get price");
 	})
-      const getTokensList = await tokensList()
-        .then((result:any) => {
-          setAllTokens(result);
-	  console.log(result);
-        })
-        .catch(() => {
-          console.log("failed to get all tokens");
-	})
       const getTokens = await tokens(address) 
         .then((result:any) => {
-	  if (result < 1) {
-            setUserTokens(undefined);
-	  } else {
-            setUserTokens(result); 
-	  }
+	  result.tokens.map((token:any) => {
+	    // @ts-ignore
+            const FindToken = result.list.contracts.find(tk => tk.symbol === token.token.metadata.symbol);
+	    const TokenAmount = token.balance.slice(0, Number(- token.token.metadata.decimals)) + "." + token.balance.slice(Number(- token.token.metadata.decimals));
+	    TokensTotalCurrency += FindToken.currentPrice * Number(TokenAmount);
+            CurrencyTotal += FindToken.currentPrice * Number(TokenAmount);
+	  })
+          setTokensCurrency(TokensTotalCurrency);
         })
         .catch(() => {
           console.log("failed to get user tokens"); 
         })
-    }
-    const addTokens = () => {
-      if (userTokens && allTokens) {
-	userTokens.map((token:any) => {
-          const FindToken = allTokens.find(tk => tk.symbol === token.token.metadata.symbol);
-        }) 
-      } 
+      setTotalCurrency(CurrencyTotal);
     }
     getAssetsUtils();
-    addTokens();
+    setInterval(function(){
+	getAssetsUtils();
+      },60 * 1000);
   }, [])
   return (
     <div className="portfolio-component">
@@ -82,16 +80,16 @@ export default function Assets() {
 	</a>
       </div>
       <div className="portfolio-component-assets-total-container">
-        <p className="portfolio-component-assets-total">0.00</p>
+        <p className="portfolio-component-assets-total">{(totalCurrency + xtzBalance).toFixed(2)}</p>
 	<p className="portfolio-component-balance-tag">XTZ</p>
       </div>
-      <p className="portfolio-component-balance-amount">$0</p>
+      <p className="portfolio-component-balance-amount">${((price * xtzBalance) + price * totalCurrency).toFixed(2)}</p>
       <div className="portfolio-component-assets-container">
         <div className="portfolio-component-asset-box">
 	  <div className="portfolio-component-asset-header-container">
             <p className="portfolio-component-asset-header">XTZ</p>
 	    <div className="portfolio-component-asset-percentage-box">
-	      <p className="portfolio-component-asset-percentage">0</p>
+	      <p className="portfolio-component-asset-percentage">{((price * xtzBalance) / (price * xtzBalance + price * totalCurrency) * 100).toFixed(2)}</p>
 	      <p>%</p>
 	    </div>
 	  </div>
@@ -104,13 +102,13 @@ export default function Assets() {
 	  <div className="portfolio-component-asset-header-container">
             <p className="portfolio-component-asset-header">Tokens</p>
 	    <div className="portfolio-component-asset-percentage-box">
-              <p className="portfolio-component-asset-percentage">0</p>
+              <p className="portfolio-component-asset-percentage">{((price * totalCurrency) / (price * xtzBalance + price * totalCurrency) * 100).toFixed(2)}</p>
               <p>%</p>
 	    </div>
 	  </div>
 	  <div className="portfolio-component-asset-balance-container">
-	    <p className="portfolio-component-asset-balance">0</p>
-	    <p className="portfolio-component-asset-currency">$0</p>
+	    <p className="portfolio-component-asset-balance">{(tokenCurrency).toFixed(2)}</p>
+	    <p className="portfolio-component-asset-currency">${(price * tokenCurrency).toFixed(2)}</p>
 	  </div>
 	</div>	
         <div className="portfolio-component-asset-box">
