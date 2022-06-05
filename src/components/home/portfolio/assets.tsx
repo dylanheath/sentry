@@ -80,7 +80,7 @@ export default function Assets() {
 	</a>
       </div>
       <div className="portfolio-component-assets-total-container">
-        <p className="portfolio-component-assets-total">{(totalCurrency + xtzBalance).toFixed(2)}</p>
+        <p className="portfolio-component-assets-total">{(totalCurrency) == 0 ? "0" : (totalCurrency + xtzBalance).toFixed(2)}</p>
 	<p className="portfolio-component-balance-tag">XTZ</p>
       </div>
       <p className="portfolio-component-balance-amount">${((price * xtzBalance) + price * totalCurrency).toFixed(2)}</p>
@@ -89,7 +89,7 @@ export default function Assets() {
 	  <div className="portfolio-component-asset-header-container">
             <p className="portfolio-component-asset-header">XTZ</p>
 	    <div className="portfolio-component-asset-percentage-box">
-	      <p className="portfolio-component-asset-percentage">{((price * xtzBalance) / (price * xtzBalance + price * totalCurrency) * 100).toFixed(2)}</p>
+	      <p className="portfolio-component-asset-percentage">{totalCurrency ==  0 ? "0" : ((price * xtzBalance) / (price * xtzBalance + price * totalCurrency) * 100).toFixed(2)}</p>
 	      <p>%</p>
 	    </div>
 	  </div>
@@ -102,7 +102,7 @@ export default function Assets() {
 	  <div className="portfolio-component-asset-header-container">
             <p className="portfolio-component-asset-header">Tokens</p>
 	    <div className="portfolio-component-asset-percentage-box">
-              <p className="portfolio-component-asset-percentage">{((price * totalCurrency) / (price * xtzBalance + price * totalCurrency) * 100).toFixed(2)}</p>
+              <p className="portfolio-component-asset-percentage">{totalCurrency == 0 ? "0" : ((price * totalCurrency) / (price * xtzBalance + price * totalCurrency) * 100).toFixed(2)}</p>
               <p>%</p>
 	    </div>
 	  </div>
