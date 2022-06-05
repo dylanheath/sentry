@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@airgap/beacon-sdk": "^2.3.9",
+    "@microsoft/signalr": "^6.0.5",
     "@taquito/beacon-wallet": "^11.2.0",
     "@taquito/taquito": "^11.2.0",
     "@testing-library/jest-dom": "^5.16.4",

@@ -15,8 +15,8 @@ import { tokensList } from '../../../utils/user/tokensList';
 export default function Assets() {
   const [total, setTotal] = useState<number>(0);
   const [totalCurrency, setTotalCurrency] = useState<number>(0);
-  const [userTokens , setUserTokens] = useState<number>(0);
-  const [allTokens, setAllTokens] = useState<Array<string>>();
+  const [userTokens , setUserTokens] = useState<Array<string>>();
+  const [allTokens, setAllTokens] = useState<Array<any>>();
   const [price, setPrice] = useState<number>(0); 
   const [xtzBalance, setXtzBalance] = useState<number>(0);
 
@@ -51,14 +51,25 @@ export default function Assets() {
 	})
       const getTokens = await tokens(address) 
         .then((result:any) => {
-          setUserTokens(result); 
+	  if (result < 1) {
+            setUserTokens(undefined);
+	  } else {
+            setUserTokens(result); 
+	  }
         })
         .catch(() => {
           console.log("failed to get user tokens"); 
         })
-
+    }
+    const addTokens = () => {
+      if (userTokens && allTokens) {
+	userTokens.map((token:any) => {
+          const FindToken = allTokens.find(tk => tk.symbol === token.token.metadata.symbol);
+        }) 
+      } 
     }
     getAssetsUtils();
+    addTokens();
   }, [])
   return (
     <div className="portfolio-component">
