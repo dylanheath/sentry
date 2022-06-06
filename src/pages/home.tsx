@@ -10,7 +10,8 @@ import Tokens from '../components/home/portfolio/tokens';
 import Price from '../components/home/price/price';
 import Analytics from '../components/home/price/analytics';
 import Market from '../components/home/price/market';
-
+import Releases from '../components/home/more/releases';
+import Status from '../components/home/more/status';
 
 export default function Home({activeWallet} : {activeWallet:Boolean}) {
 
@@ -44,7 +45,16 @@ export default function Home({activeWallet} : {activeWallet:Boolean}) {
 	<Analytics />
 	<Market />
       </div>
+      <div className="home-header-description-container">
+        <h1 className="home-header">More</h1>
+        <h2 className="home-description">View Releases, Server Status & More</h2>
+      </div>
       <div className="Bottom-container">
+        <Releases />
+	<Status />
+      </div>
+      <div className="Footer-container">
+
       </div>
     </div>
   )

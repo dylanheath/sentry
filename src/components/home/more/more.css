@@ -1,0 +1,212 @@
+.more-component {
+background: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #3d3d3d;
+}
+
+.more-component-header-container {
+	    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.more-component-header {
+	    font-size: 22px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+}
+
+.more-component-header-real-time-tag {
+display: flex;
+    align-items: center;
+    grid-gap: 8px;
+    gap: 8px;
+    padding: 4px 6px 4px 4px;
+    border-radius: 6px;
+    background: #212121;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 500;
+    color: #d8d8d8;
+}
+
+.more-component-header-real-time-divider {
+  height: 8px;
+    border: 1px solid #3d3d3d;	
+}
+
+.more-component-update-status-wrapper {
+display: flex;
+    align-items: center;
+    grid-gap: 2px;
+    padding: 4px 4px 4px 4px;
+    border-radius: 6px;
+    border: 1px solid #3d3d3d;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 500;
+    color: rgb(70, 70, 70);
+}
+
+.more-component-update-status {
+	    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(26,161,104,.15);
+    border: 1.2px solid rgba(26,161,104,.15);
+    animation: blinker 2s infinite;
+    transition: .5s;
+}
+
+.more-component-description-container {
+    display: flex;
+    padding-top: 24px;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.more-component-release-header {
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+    float: left;
+}
+
+.more-component-release-description-container {
+	display: flex;
+    align-items: left;
+    grid-gap: 6px;
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #d8d8d8;
+    background: none;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all .2s ease;
+    text-decoration: none;
+    transition: .5s;
+    border: 1px solid #3d3d3d;
+}
+
+.more-component-release-wrapper {
+	padding-top: 14px;
+}
+
+.more-component-release-description {
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+}
+
+
+.more-component-release-options-container {
+	    padding-top: 14px;
+    width: 100%;
+    display: grid;
+    grid-gap: 14px;
+    grid-gap: 14px;
+    gap: 14px;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.more-component-release-options-box {
+	display: flex;
+    align-items: left;
+    gap: 30px;
+    font-size: 13px;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #d8d8d8;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all .2s ease;
+    text-decoration: none;
+    border: 1px solid #3d3d3d;
+    transition: .5s;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.more-component-release-options-box:hover {
+	background:#212121 ;
+}
+
+.more-component-release-options-header-container {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.more-component-release-options-header {
+
+}
+
+.more-component-release-options-footer {
+	font-size: 12px;
+    line-height: 1;
+    font-weight: 600;
+    color: #3d3d3d;
+    padding-top: 4px;
+}
+
+.more-component-status-container {
+}
+
+.more-component-status-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+
+.more-component-status-box {
+    display: flex;
+    align-items: left;
+    grid-gap: 6px;
+    grid-gap: 6px;
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #d8d8d8;
+    background: none;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all .2s ease;
+    text-decoration: none;
+    transition: .5s;
+    border: 1px solid #3d3d3d;
+    flex-direction:column;
+}
+
+.more-component-status-list-container {
+  padding-top: 18px;
+}
+
+.more-component-status-divider-container {
+    padding-left: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.more-component-status-divider {
+      width: 30px;
+    border: 1px solid #3d3d3d;
+    float: left;
+}
+
+
+.more-component-status-operations-container {
+	padding-top: 14px;
+}
+

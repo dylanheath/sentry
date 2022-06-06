@@ -57,5 +57,12 @@ display: grid;
 }
 
 .Bottom-container {
+display: grid;
+grid-template-columns: repeat(3,1fr);
+grid-gap: 16px;
+margin-top: 30px;
+}
+
+.Footer-container {
 
 }
