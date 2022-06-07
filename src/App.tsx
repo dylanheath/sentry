@@ -12,6 +12,7 @@ import SentryLogo from './assets/branding/sentry.png';
 import Home from './pages/home';
 import Trade from './pages/trade';
 import Explore from './pages/explore';
+import Market from './pages/market';
 
 // context
 import {UserContext} from './utils/context/context';
@@ -76,6 +77,9 @@ function App() {
 		  <a className="app-header-nav-button"  href="/explore">
                     Explore
 		  </a>
+                  <a className="app-header-nav-button"  href="/market">
+                    Markets
+		  </a>
 		</div>
 		<div className="app-header-left">
 		  {active === false && (
@@ -93,6 +97,7 @@ function App() {
 	          <Route path="/" element={<Home activeWallet={active} />} />
 		  <Route path="/trade" element={<Trade />} />
 		  <Route path="/explore" element={<Explore />} />
+		  <Route path="/market" element={<Market />} />
 	        </Routes>
 	      </div>
 	    </div>

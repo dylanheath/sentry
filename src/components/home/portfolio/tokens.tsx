@@ -3,8 +3,51 @@ import React, {useEffect, useState} from 'react';
 // styling
 import './portfolio.css';
 
-export default function Tokens() {
+// wallet
+import { getActiveAccount, getAddress } from '../../../utils/wallet/wallet';
 
+// utils
+import { tokens } from '../../../utils/user/tokens';
+import { xtzPrice } from '../../../utils/price/xtz';
+
+export default function Tokens() {
+  const [tokensTotalCurrency, setTokensTotalCurrency] = useState<number>(0);
+  const [price, setPrice] = useState<number>(0)
+
+  useEffect(() => {
+    const ownedTokens = async () => {
+       let CurrencyTotal: number = tokensTotalCurrency;
+       let myAddress: String;
+       const activeAccount = await getActiveAccount();
+       const address = await getAddress();
+       if (activeAccount) {
+       const getTokens = await tokens(address) 
+          .then((result:any) => {
+	    result.tokens.map((token:any) => {
+	      // @ts-ignore
+              const FindToken = result.list.contracts.find(tk => tk.symbol === token.token.metadata.symbol);
+	      const TokenAmount = token.balance.slice(0, Number(- token.token.metadata.decimals)) + "." + token.balance.slice(Number(- token.token.metadata.decimals));
+              CurrencyTotal += FindToken.currentPrice * Number(TokenAmount);
+	    })
+            setTokensTotalCurrency(CurrencyTotal);
+         })
+        .catch(() => {
+          console.log("failed to get user tokens"); 
+        })
+       const getPrice = await xtzPrice()
+         .then((result:any) => {
+           setPrice(result[0].Price);
+	 })
+         .catch(() => {
+           console.log("failed to get price");
+         })
+      }
+    }
+    ownedTokens();
+    setInterval(function(){
+	ownedTokens();
+      },60 * 1000);
+  }, [])
   return (
     <div className="portfolio-component">
       <div className="portfolio-component-header-container">
@@ -16,10 +59,10 @@ export default function Tokens() {
 	</div>
        </div>
       <div className="portfolio-component-assets-total-container">
-        <p className="portfolio-component-assets-total">0.00</p>
+        <p className="portfolio-component-assets-total">{(tokensTotalCurrency).toFixed(2)}</p>
 	<p className="portfolio-component-balance-tag">XTZ</p>
       </div>
-      <p className="portfolio-component-balance-amount">$0</p>
+      <p className="portfolio-component-balance-amount">${(price * tokensTotalCurrency).toFixed(2)}</p>
       <div className="portfolio-component-assets-container">
         <div className="portfolio-component-tokens-container">
 

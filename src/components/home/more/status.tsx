@@ -73,21 +73,30 @@ export default function Status() {
         <div className="more-component-status-box">
            <div className="more-component-status-wrapper">
              <p className="more-component-status-tag">TZKT</p> 
-	     <p>{tzktStatus}</p>
+	     <div className="more-component-status-icon-container">
+	       <p>{tzktStatus}</p>
+	       <svg viewBox="0 0 24 24" width="14" height="14" style={tzktStatus !== "online" ? {fill: "#b34714"} : {fill: "#294a3b"}} role="img"><path d="M12 21.5999C14.5461 21.5999 16.9879 20.5885 18.7882 18.7881C20.5886 16.9878 21.6 14.546 21.6 11.9999C21.6 9.45382 20.5886 7.01203 18.7882 5.21168C16.9879 3.41133 14.5461 2.3999 12 2.3999C9.45391 2.3999 7.01212 3.41133 5.21177 5.21168C3.41142 7.01203 2.39999 9.45382 2.39999 11.9999C2.39999 14.546 3.41142 16.9878 5.21177 18.7881C7.01212 20.5885 9.45391 21.5999 12 21.5999ZM19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5C15.866 5 19 8.13401 19 12ZM12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8Z"></path></svg>
+	     </div>
 	   </div>
 	   <div className="more-component-status-divider-container">
              <div className="more-component-status-divider"></div> 
 	   </div>
            <div className="more-component-status-wrapper">
              <p className="more-component-status-tag">Cen</p> 
-	     <p>{cenStatus}</p>
+	     <div className="more-component-status-icon-container">
+	       <p>{cenStatus}</p>
+	       <svg viewBox="0 0 24 24" width="14" height="14" role="img" style={cenStatus !== "online" ? {fill: "#b34714"} : {fill: "#294a3b"}}><path d="M12 21.5999C14.5461 21.5999 16.9879 20.5885 18.7882 18.7881C20.5886 16.9878 21.6 14.546 21.6 11.9999C21.6 9.45382 20.5886 7.01203 18.7882 5.21168C16.9879 3.41133 14.5461 2.3999 12 2.3999C9.45391 2.3999 7.01212 3.41133 5.21177 5.21168C3.41142 7.01203 2.39999 9.45382 2.39999 11.9999C2.39999 14.546 3.41142 16.9878 5.21177 18.7881C7.01212 20.5885 9.45391 21.5999 12 21.5999ZM19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5C15.866 5 19 8.13401 19 12ZM12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8Z"></path></svg>
+	     </div>
 	   </div>
            <div className="more-component-status-divider-container">
              <div className="more-component-status-divider"></div> 
 	   </div>
            <div className="more-component-status-wrapper">
              <p className="more-component-status-tag">CoinGecko</p> 
-	     <p>{coinGeckoStatus}</p>
+	     <div className="more-component-status-icon-container">
+	       <p>{coinGeckoStatus}</p>
+	       <svg viewBox="0 0 24 24" width="14" height="14" role="img" style={coinGeckoStatus !== "online" ? {fill: "#b34714"} : {fill: "#294a3b"}}><path d="M12 21.5999C14.5461 21.5999 16.9879 20.5885 18.7882 18.7881C20.5886 16.9878 21.6 14.546 21.6 11.9999C21.6 9.45382 20.5886 7.01203 18.7882 5.21168C16.9879 3.41133 14.5461 2.3999 12 2.3999C9.45391 2.3999 7.01212 3.41133 5.21177 5.21168C3.41142 7.01203 2.39999 9.45382 2.39999 11.9999C2.39999 14.546 3.41142 16.9878 5.21177 18.7881C7.01212 20.5885 9.45391 21.5999 12 21.5999ZM19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5C15.866 5 19 8.13401 19 12ZM12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8Z"></path></svg>
+	     </div>
 	   </div>
 	</div>
       </div>
