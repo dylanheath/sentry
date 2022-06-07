@@ -18,3 +18,38 @@ text-align: left;
     margin-top: 4px;
     color: #3d3d3d;
 }
+
+.Top-container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 14px;
+    margin-top: 30px;
+}
+
+.top-all-markets-header-container {
+
+}
+
+.top-all-markets-header {
+    color: #d8d8d8;
+    font-size: 20px;
+}
+
+.top-tezos-markets-header {
+    color: #d8d8d8;
+    font-size: 24px;
+}
+
+.market-component-header-container {
+	    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.market-component-header {
+font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+}

@@ -1,0 +1,8 @@
+.market-component {
+background: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #3d3d3d;
+}
