@@ -5,4 +5,10 @@ background: #1a1a1a;
     display: flex;
     flex-direction: column;
     border: 1px solid #3d3d3d;
+    transition: .5s;
+}
+
+.market-component:hover {
+	background:#212121 ;
+	transition: .5s;
 }

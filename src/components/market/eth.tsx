@@ -34,6 +34,9 @@ export default function Eth() {
         })
     } 
     getEth();
+    setInterval(function(){
+        getEth();
+      },60 * 1000);
   }, [])
 
   return (

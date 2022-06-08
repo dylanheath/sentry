@@ -34,6 +34,9 @@ export default function Xrp() {
         })
     } 
     getXrp();
+    setInterval(function(){
+        getXrp();
+      },60 * 1000);
   }, [])
 
   return (

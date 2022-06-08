@@ -34,6 +34,9 @@ export default function Usdc() {
         })
     } 
     getUsdc();
+    setInterval(function(){
+        getUsdc();
+      },60 * 1000);
   }, [])
 
   return (

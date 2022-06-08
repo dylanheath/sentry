@@ -34,6 +34,9 @@ export default function Usdt() {
         })
     } 
     getUsdt();
+    setInterval(function(){
+        getUsdt();
+      },60 * 1000);
   }, [])
 
   return (

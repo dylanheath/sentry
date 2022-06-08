@@ -34,6 +34,9 @@ export default function Sol() {
         })
     } 
     getSol();
+    setInterval(function(){
+        getSol();
+      },60 * 1000);
   }, [])
 
   return (

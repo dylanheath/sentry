@@ -34,6 +34,9 @@ export default function Btc() {
         })
     } 
     getBtc();
+    setInterval(function(){
+        getBtc();
+      },60 * 1000);
   }, [])
 
   return (

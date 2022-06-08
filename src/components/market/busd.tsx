@@ -34,6 +34,9 @@ export default function Busd() {
         })
     } 
     getBusd();
+    setInterval(function(){
+        getBusd();
+      },60 * 1000);
   }, [])
 
   return (

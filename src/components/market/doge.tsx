@@ -34,6 +34,9 @@ export default function Doge() {
         })
     } 
     getDoge();
+    setInterval(function(){
+        getDoge();
+      },60 * 1000);
   }, [])
 
   return (

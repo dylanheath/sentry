@@ -34,6 +34,9 @@ export default function Bnb() {
         })
     } 
     getBnb();
+    setInterval(function(){
+        getBnb();
+      },60 * 1000);
   }, [])
 
   return (
