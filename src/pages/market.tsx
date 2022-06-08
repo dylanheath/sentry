@@ -23,6 +23,12 @@ import { marketList } from '../utils/price/marketlist';
 
 export default function Market() {
 
+  function rand({min,max,interval}: {min:number, max:number, interval:number}) {
+    interval = 1;
+    var r = Math.floor(Math.random()*(max-min+interval)/interval);
+    return r*interval+min;
+  }
+
   return (
     <div className="Market">
       <div className="market-header-container">
@@ -58,13 +64,13 @@ export default function Market() {
             <h4 className="top-all-markets-header">All Markets</h4>
 	  </div>
 	  <div className="top-all-markets-components-container">
-	    <PriceComponent market={marketList[Math.floor((Math.random() * 4) + 0)]} />
-            <PriceComponent market={marketList[Math.floor((Math.random() * 7) +  5)]} />
-            <PriceComponent market={marketList[Math.floor((Math.random() * 10) +  9)]} />
-            <PriceComponent market={marketList[Math.floor((Math.random() * 13) + 11)]} />
-	    <PriceComponent market={marketList[Math.floor((Math.random() * 16) + 14)]} />
-	    <PriceComponent market={marketList[Math.floor((Math.random() * 19) + 17)]} />
-	    <PriceComponent market={marketList[Math.floor((Math.random() * 22) + 20)]} />
+	    <PriceComponent market={marketList[rand({min: 0, max: 4, interval: 1})]} />
+            <PriceComponent market={marketList[rand({min: 5, max: 8, interval: 1})]} />
+            <PriceComponent market={marketList[rand({min: 9, max: 12, interval: 1})]} />
+            <PriceComponent market={marketList[rand({min: 14, max: 16, interval: 1})]} />
+	    <PriceComponent market={marketList[rand({min: 16, max: 20, interval: 1})]} />
+	    <PriceComponent market={marketList[rand({min: 20, max: 24, interval: 1})]} />
+	    <PriceComponent market={marketList[rand({min: 24, max: 34, interval: 1})]} />
 	  </div>
 	</div>
 	<div className="top-tezos-markets-container">
