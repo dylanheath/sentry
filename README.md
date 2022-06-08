@@ -29,4 +29,4 @@ npm start
 Sentry is Open to Contributions, for every pull request make sure you include 
 - What you have Worked on or Working on
 - A detailed explanation of changes
-- Reason for these change
+- Reason for these changes
