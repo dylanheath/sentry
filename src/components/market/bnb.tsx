@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 // styling
 import './market.css';
@@ -11,12 +12,14 @@ import { bnbPrice } from '../../utils/price/bnb';
 
 type coinData = {
   price: number,
-  sparkline: Array<number>
-  change: number
+  sparkline: Array<number>,
+  change: number,
+  id: string
 }
 
 export default function Bnb() {
-  const [price, setPrice] = useState<coinData>({price: 0, sparkline: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], change: 0});
+  const [price, setPrice] = useState<coinData>({price: 0, sparkline: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  change: 0, id: ""});
   
   useEffect(() => {
     const getBnb = async () => {
@@ -25,7 +28,8 @@ export default function Bnb() {
            const marketObj = {
 	     price: result.market_data.current_price.usd,
              sparkline: result.market_data.sparkline_7d.price,
-	     change: result.market_data.price_change_percentage_7d
+	     change: result.market_data.price_change_percentage_7d,
+	     id: result.id
            }
           setPrice(marketObj);
         })
@@ -40,7 +44,7 @@ export default function Bnb() {
   }, [])
 
   return (
-    <div className="market-component">
+    <Link className="market-component" to={`/market/${price.id}`}>
       <div className="market-component-header-container">
         <p className="market-component-header">BNB - USD</p>
 	<div className="market-component-price-container">
@@ -63,6 +67,6 @@ export default function Bnb() {
           <SparklinesSpots style={{fill: "#d8d8d8"}} />
         </Sparklines>
       </div>
-    </div>
+    </Link>
   )
 }

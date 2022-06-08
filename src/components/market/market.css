@@ -6,6 +6,7 @@ background: #1a1a1a;
     flex-direction: column;
     border: 1px solid #3d3d3d;
     transition: .5s;
+    text-decoration: none;
 }
 
 .market-component:hover {

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import axios from 'axios';
 
 // styling
@@ -12,6 +12,7 @@ import SentryLogo from './assets/branding/sentry.png';
 import Home from './pages/home';
 import Trade from './pages/trade';
 import Explore from './pages/explore';
+import Markets from './pages/markets';
 import Market from './pages/market';
 
 // context
@@ -63,23 +64,23 @@ function App() {
             <header className="app-header">
               <div className="app-header-wrapper">
                 <div className="app-header-left">
-		  <a href="/" className="app-header-logo-wrapper">
+		  <Link to={"/"} className="app-header-logo-wrapper">
                     <img className="app-header-logo" src={SentryLogo} alt="Sentry Logo" /> 
-		  </a> 
+		  </Link> 
 		</div> 
 		<div className="app-header-middle">
-		  <a className="app-header-nav-button" href="/">
+		  <Link className="app-header-nav-button" to={"/"}>
                     Home
-		  </a> 
-		  <a className="app-header-nav-button" href="/trade">
+		  </Link> 
+		  <Link className="app-header-nav-button" to={"/trade"}>
                     Trade
-		  </a>
-		  <a className="app-header-nav-button"  href="/explore">
+		  </Link>
+		  <Link className="app-header-nav-button"  to={"/explore"}>
                     Explore
-		  </a>
-                  <a className="app-header-nav-button"  href="/market">
+		  </Link>
+                  <Link className="app-header-nav-button"  to={"/market"}>
                     Markets
-		  </a>
+		  </Link>
 		</div>
 		<div className="app-header-left">
 		  {active === false && (
@@ -97,7 +98,8 @@ function App() {
 	          <Route path="/" element={<Home activeWallet={active} />} />
 		  <Route path="/trade" element={<Trade />} />
 		  <Route path="/explore" element={<Explore />} />
-		  <Route path="/market" element={<Market />} />
+		  <Route path="/market" element={<Markets />} />
+		  <Route path="/market:id" element={<Market />} />
 	        </Routes>
 	      </div>
 	    </div>

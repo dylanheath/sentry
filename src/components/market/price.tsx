@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 // styling
 import './market.css';
@@ -14,12 +15,13 @@ type coinData = {
   sparkline: Array<number>
   change: number,
   symbol: string,
-  name: string
+  name: string,
+  id: string
 }
 
 export default function PriceComponent({market} : {market:any}) {
   const [price, setPrice] = useState<coinData>({price: 0, sparkline: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-    change: 0, symbol: "", name: ""});
+    change: 0, symbol: "", name: "", id: ""});
   
   useEffect(() => {
     const getPrice = async () => {
@@ -30,7 +32,8 @@ export default function PriceComponent({market} : {market:any}) {
              sparkline: result.market_data.sparkline_7d.price,
 	     change: result.market_data.price_change_percentage_7d,
 	     symbol: result.symbol,
-	     name: result.name
+	     name: result.name,
+	     id: result.id,
            }
           setPrice(marketObj);
         })
@@ -45,7 +48,7 @@ export default function PriceComponent({market} : {market:any}) {
   }, [])
 
   return (
-    <div className="market-component">
+    <Link className="market-component" to={`/market/${price.id}`}>
       <div className="market-component-header-container">
         <p className="market-component-header">{(price.symbol).toUpperCase()} - USD</p>
 	<div className="market-component-price-container">
@@ -77,6 +80,6 @@ export default function PriceComponent({market} : {market:any}) {
 	  )}
 	</>
       </div>
-    </div>
+    </Link>
   )
 }

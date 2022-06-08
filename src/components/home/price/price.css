@@ -10,6 +10,7 @@ background: #1a1a1a;
 .price-component-real-time-header {
 	    color: #d8d8d8;
     transition: .5s;
+    text-decoration: none;
 }
 
 .price-component-price-container {

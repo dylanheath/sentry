@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 // styling
 import './market.css';
@@ -13,10 +14,12 @@ type coinData = {
   price: number,
   sparkline: Array<number>
   change: number
+  id: string
 }
 
 export default function Btc() {
-  const [price, setPrice] = useState<coinData>({price: 0, sparkline: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], change: 0});
+  const [price, setPrice] = useState<coinData>({price: 0, sparkline: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  change: 0, id: ""});
   
   useEffect(() => {
     const getBtc = async () => {
@@ -25,7 +28,8 @@ export default function Btc() {
            const marketObj = {
 	     price: result.market_data.current_price.usd,
              sparkline: result.market_data.sparkline_7d.price,
-	     change: result.market_data.price_change_percentage_7d
+	     change: result.market_data.price_change_percentage_7d,
+             id: result.id
            }
           setPrice(marketObj);
         })
@@ -40,7 +44,7 @@ export default function Btc() {
   }, [])
 
   return (
-    <div className="market-component">
+    <Link className="market-component" to={`/market/${price.id}`}>
       <div className="market-component-header-container">
         <p className="market-component-header">BTC - USD</p>
 	<div className="market-component-price-container">
@@ -63,6 +67,6 @@ export default function Btc() {
           <SparklinesSpots style={{fill: "#d8d8d8"}} />
         </Sparklines>
       </div>
-    </div>
+    </Link>
   )
 }
