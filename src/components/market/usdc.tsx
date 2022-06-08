@@ -7,7 +7,7 @@ import './market.css';
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
 // utils
-import { btcPrice } from '../../utils/price/btc';
+import { usdcPrice } from '../../utils/price/usdc';
 
 type coinData = {
   price: number,
@@ -15,12 +15,12 @@ type coinData = {
   change: number
 }
 
-export default function Btc() {
+export default function Usdc() {
   const [price, setPrice] = useState<coinData>({price: 0, sparkline: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], change: 0});
   
   useEffect(() => {
-    const getBtc = async () => {
-      const getPrice = await btcPrice()
+    const getUsdc = async () => {
+      const getPrice = await usdcPrice()
         .then((result:any) => {
            const marketObj = {
 	     price: result.market_data.current_price.usd,
@@ -33,13 +33,13 @@ export default function Btc() {
           console.log("failed to get price");
         })
     } 
-    getBtc();
+    getUsdc();
   }, [])
 
   return (
     <div className="market-component">
       <div className="market-component-header-container">
-        <p className="market-component-header">BTC - USD</p>
+        <p className="market-component-header">USDC - USD</p>
 	<div className="market-component-price-container">
           <p className="market-component-price">${(price.price).toLocaleString()}</p>
           <div className="market-component-price-update-status-wrapper">
@@ -47,7 +47,7 @@ export default function Btc() {
 	  </div>
 	</div>
       </div>
-      <p className="market-component-price-name">Bitcoin</p>
+      <p className="market-component-price-name">USD Coin</p>
       <div className="market-component-price-change-tag-container">
         <div className="market-component-price-change-wrapper">
           <p className="market-component-price-change">{(price.change).toFixed(2)}</p>  

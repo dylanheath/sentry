@@ -21,7 +21,7 @@ text-align: left;
 
 .Top-container {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(1,1fr);
     grid-gap: 14px;
     margin-top: 30px;
 }
@@ -52,4 +52,40 @@ font-size: 16px;
     line-height: 1;
     font-weight: 600;
     color: #d8d8d8;
+}
+
+.market-component-price-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.market-component-price-name {
+	font-size: 14px;
+    line-height: 1;
+    font-weight: 600;
+    color: #3d3d3d;
+    padding-top: 8px;
+}
+
+.market-component-price-change-tag-container {
+	display: flex;
+  padding-top: 8px;
+}
+
+.market-component-price-change {
+color: #d8d8d8;
+
+}
+
+.market-component-price-graph-container {
+	padding-top: 8px;
+}
+
+.top-all-markets-component-container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 14px;
+    margin-top: 30px;
 }
