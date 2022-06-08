@@ -98,8 +98,8 @@ display: flex;
     font-size: 13px;
     line-height: 1.1;
     font-weight: 600;
-    color: white;
-    background: #ea5e1b;
+    color: black;
+    background: #d8d8d8;
     padding: 0 12px;
     height: 32px;
     border-radius: 6px;
@@ -112,7 +112,7 @@ display: flex;
 
 .app-header-button:hover {
 	transition: .5s;
-	background: #b34714;
+	background: #919191;
 }
 
 .app-page-container {

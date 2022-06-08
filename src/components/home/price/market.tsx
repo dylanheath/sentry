@@ -83,7 +83,7 @@ export default function Market() {
 	  </div>
 	  <div className="market-component-price-graph-container">
             <Sparklines data={btcData.sparkline}>
-    	      <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
+    	      <SparklinesLine style={{ fill: "#d8d8d8" }} color="#d8d8d8" />
               <SparklinesSpots style={{fill: "#d8d8d8"}} />
             </Sparklines>
 	  </div>
@@ -107,7 +107,7 @@ export default function Market() {
 	  </div>
 	  <div className="market-component-price-graph-container">
 	    <Sparklines data={ethData.sparkline}>
-    	      <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
+    	      <SparklinesLine style={{ fill: "#d8d8d8" }} color="#d8d8d8" />
               <SparklinesSpots style={{fill: "#d8d8d8"}} />
             </Sparklines>
 	  </div>

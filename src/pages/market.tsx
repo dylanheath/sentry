@@ -80,7 +80,7 @@ export default function Market() {
 	    </div>
 	  <div className="market-data-graph-component-container">
             <Sparklines data={marketData.sparkline}>
-    	      <SparklinesLine style={{ fill: "#b34714", strokeWidth: 0.5 }} color="#ea5e1b" />
+    	      <SparklinesLine style={{ fill: "#d8d8d8", strokeWidth: 0.5 }} color="#d8d8d8" />
               <SparklinesSpots style={{fill: "#d8d8d8"}} />
             </Sparklines>
 	  </div>
