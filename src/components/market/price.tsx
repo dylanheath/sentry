@@ -63,10 +63,19 @@ export default function PriceComponent({market} : {market:any}) {
 	</div>
       </div>
       <div className="market-component-price-graph-container">
-        <Sparklines data={price.sparkline}>
-    	  <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
-          <SparklinesSpots style={{fill: "#d8d8d8"}} />
-        </Sparklines>
+        {price.sparkline.length > 1 && (
+          <Sparklines data={price.sparkline}>
+    	    <SparklinesLine style={{ fill: "#b34714" }} color="#ea5e1b" />
+            <SparklinesSpots style={{fill: "#d8d8d8"}} />
+          </Sparklines>
+	)}
+	<>
+	  {price.sparkline.length < 1 && (
+	    <div className="market-data-not-found-container">
+              <p className="market-data-not-found">Sparkline Not Available</p>
+	    </div>
+	  )}
+	</>
       </div>
     </div>
   )
