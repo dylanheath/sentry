@@ -13,3 +13,13 @@ Sentry is a Tezos powered Portfolio, Payment & Assets management DAPP which allo
 * Portfolio Analysis & Tools
 * Games
 * 30+ Markets
+
+
+## Running from source
+
+```
+git clone https://github.com/dylanheath/cen.git
+cd cen
+npm install
+npm start
+```
