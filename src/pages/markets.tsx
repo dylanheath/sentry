@@ -31,6 +31,10 @@ export default function Markets() {
     return r*interval+min;
   }
 
+  useEffect(() => {
+    document.title = "sentry | Markets"
+  })
+
   return (
     <div className="Market">
       <div className="market-header-container">

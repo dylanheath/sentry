@@ -99,7 +99,7 @@ function App() {
 		  <Route path="/trade" element={<Trade />} />
 		  <Route path="/explore" element={<Explore />} />
 		  <Route path="/market" element={<Markets />} />
-		  <Route path="/market:id" element={<Market />} />
+		  <Route path="/market/:id" element={<Market />} />
 	        </Routes>
 	      </div>
 	    </div>

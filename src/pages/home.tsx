@@ -14,7 +14,9 @@ import Releases from '../components/home/more/releases';
 import Status from '../components/home/more/status';
 
 export default function Home({activeWallet} : {activeWallet:Boolean}) {
-
+  useEffect(() => {
+    document.title = "sentry"
+  })
   return (
     <div className="Home">
       <h1 className="home-header">Your Portfolio</h1>
