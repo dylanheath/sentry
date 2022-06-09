@@ -32,7 +32,7 @@ export default function Markets() {
   }
 
   useEffect(() => {
-    document.title = "sentry | Markets"
+    document.title = "sentry | Market"
   })
 
   return (
