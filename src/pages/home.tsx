@@ -9,6 +9,7 @@ import Assets from '../components/home/portfolio/assets';
 import Tokens from '../components/home/portfolio/tokens';
 import Price from '../components/home/price/price';
 import Analytics from '../components/home/price/analytics';
+import News from '../components/home/price/news';
 import Market from '../components/home/price/market';
 import Releases from '../components/home/more/releases';
 import Status from '../components/home/more/status';
@@ -45,6 +46,7 @@ export default function Home({activeWallet} : {activeWallet:Boolean}) {
       <div className="Middle-container">
         <Price />
 	<Market />
+	<News />
       </div>
       <div className="home-header-description-container">
         <h1 className="home-header">More</h1>
