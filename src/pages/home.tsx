@@ -46,7 +46,6 @@ export default function Home({activeWallet} : {activeWallet:Boolean}) {
       <div className="Middle-container">
         <Price />
 	<Market />
-	<News />
       </div>
       <div className="home-header-description-container">
         <h1 className="home-header">More</h1>

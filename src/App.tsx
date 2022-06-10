@@ -97,6 +97,7 @@ function App() {
                 <Routes>
 	          <Route path="/" element={<Home activeWallet={active} />} />
 		  <Route path="/trade" element={<Trade />} />
+		  <Route path="/trade/:id" element={<Trade />} />
 		  <Route path="/explore" element={<Explore />} />
 		  <Route path="/market" element={<Markets />} />
 		  <Route path="/market/:id" element={<Market />} />
