@@ -1,0 +1,23 @@
+.trade-component-inputs-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.trade-component-arrow-container {
+    padding: 2px;
+    border-radius: 10px;
+    height: 32px;
+    width: 32px;
+    position: relative;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    left: calc(50% - 22px);
+    border:1px solid #3d3d3d;
+        background: #1a1a1a;
+    z-index: 2;
+}
+
+
+.trade-component-arrow-wrapper {
+	padding-top: 4px;
+}

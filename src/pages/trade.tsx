@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import Swap from '../components/trade/swap';
 import Send from '../components/trade/send';
 import Liquidity from '../components/trade/liquidity';
+import TradeBox from '../components/trade/trade';
 
 // styling
 import './trade.css';
@@ -30,9 +31,11 @@ export default function Trade() {
               <button className="trade-option-button">Liquidity</button>
             </div>
 	   </div>
-	    <div className="trade-component-container">
-	    </div>
 	 </div>
+         <div className="trade-component-wrapper">
+	   <TradeBox /> 
+	 </div>
+
          </>
          )}
 	{id  == null && (
