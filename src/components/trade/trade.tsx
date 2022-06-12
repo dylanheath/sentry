@@ -13,11 +13,19 @@ export default function TradeBox() {
   const [tradeSelect, setTradeSelect] = useState<number>();
   return (
     <div className="trade-component-container">
+      <div className="trade-component-header-container">
+        <div className="trade-component-header-wrapper">
+
+	</div> 
+      </div>
      <div className="trade-component-inputs-container">
       <div className="trade-component-input-container">
         <div className="trade-component-input-select">
-
+	  <div className="trade-component-inputs-select-container">
+            <input className="trade-component-input" defaultValue={(0).toFixed(2)} />
+	  </div>
 	</div>
+	<p className="trade-component-converted-price">0.00</p>
       </div>
       <div className="trade-component-arrow-container">
         <div className="trade-component-arrow-wrapper">
@@ -26,8 +34,16 @@ export default function TradeBox() {
       </div>
       <div className="trade-component-input-container">
         <div className="trade-component-input-select">
-
+	  <div className="trade-component-inputs-selection-container">
+            <input className="trade-component-input" defaultValue={(0).toFixed(2)} />
+	  </div>
 	</div>
+	<p className="trade-component-converted-price">0.00</p>
+      </div>
+      <div className="trade-component-complete-button-wrapper">
+        <button className="trade-component-complete-button">
+          Send
+	</button>
       </div>
      </div>
     </div>
