@@ -20,11 +20,12 @@
 .trade-component-input {
   height: 100%;
   background: none;
-  font-size: 22px;
+  font-size: 28px;
   border: none;
   outline: none;
   font-weight: 600;
   color: #d8d8d8;
+  max-width: 240px;
 }
 
 .trade-component-arrow-wrapper {
@@ -73,9 +74,64 @@
 	padding-left: 4px;
 	font-size: 15px;
 	color: #3d3d3d;
+	padding-top: 6px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #d8d8d8;
   opacity: 1; /* Firefox */
 }
+
+.trade-component-coin-select-container {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    border-radius: 16px;
+    outline: none;
+    user-select: none;
+    border: none;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px 8px;
+    height: 38px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+        border: 1px solid #3d3d3d;
+	background: #1a1a1a;
+   display: flex;
+}
+
+.trade-component-inputs-selection-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.trade-component-coin-name {
+	padding-top: 8px;
+	text-align: left;
+	    font-size: 18px;
+    font-weight: 600;
+    color: #d8d8d8;
+    padding-right: 0;
+}
+
+.trade-component-coin-select-arrow-container {
+   padding-top: 6px;
+}
+
+.trade-component-coin-select-image-container {
+  
+}
+
+.trade-component-coin-select-image {
+	height: auto;
+	width: 24px;
+}
+
+.trade-component-coin-select-image-container {
+  padding-top: 7px;
+}
+
