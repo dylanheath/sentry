@@ -12,7 +12,7 @@ Sentry is a Tezos powered Portfolio, Payment & Assets management DAPP which allo
 * Swap & Liquidity Support
 * Portfolio Analysis & Tools
 * Games
-* 30+ Markets
+* 30+ Markets with Real-Time Analytics
 
 
 ## Running from source
