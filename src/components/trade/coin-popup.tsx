@@ -30,7 +30,7 @@ export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoI
  }
 
   const tokensList = Tokens.tokens.map((token:any) =>
-    <button className="token-container" onClick={() => handleSelection(token)}>
+    <button className="token-container" onClick={() => OneInput === token ? "" : TwoInput === token ? "" : handleSelection(token)} style={ OneInput === token ? {WebkitFilter: "blur(2px)", msFilter: "blur(2px)"} : TwoInput === token ? {WebkitFilter: "blur(2px)", msFilter: "blur(2px)"} : {WebkitFilter: "none", msFilter: "none"}}>
       <img className="token-icon" loading="lazy" src={token.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${token.metadata.thumbnailUri.slice(7)}` : token.metadata.thumbnailUri} />
       <p className="token-name">{token.metadata.symbol}</p>
     </button>
