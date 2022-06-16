@@ -18,8 +18,19 @@ export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoI
 {popupStateOne:boolean, popupStateTwo:boolean, OneInput:string, TwoInput:string,
  setOneInput:any, setTwoInput:any, setPopupStateOne:any,
  setPopupStateTwo:any}) {
+
+ const handleSelection = (token:any) => {
+	 if (popupStateOne == true && popupStateTwo == false) {
+	   setOneInput(token);
+	   setPopupStateOne(false);
+	 } else if (popupStateTwo == true && popupStateOne == false) {
+           setTwoInput(token);
+	   setPopupStateTwo(false);
+	 } 
+ }
+
   const tokensList = Tokens.tokens.map((token:any) =>
-    <button className="token-container">
+    <button className="token-container" onClick={() => handleSelection(token)}>
       <img className="token-icon" loading="lazy" src={token.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${token.metadata.thumbnailUri.slice(7)}` : token.metadata.thumbnailUri} />
       <p className="token-name">{token.metadata.symbol}</p>
     </button>
