@@ -233,8 +233,7 @@
     background: none;
     outline: none;
     border-radius: 12px;
-    color: rgb(255, 255, 255);
-    border: 1px solid rgb(64, 68, 79);
+    border: 1px solid #3d3d3d;
     appearance: none;
     font-size: 18px;
     height: 100%;
@@ -269,6 +268,7 @@ border: none;
 outline: none;
 font-size: 20px;
 color: #d8d8d8;
+ border: 1px solid #3d3d3d
 }
 
 .coin-popup-search-container[type=text]:focus {
@@ -284,7 +284,6 @@ color: #d8d8d8;
 }
 
 .coin-popup-quick-select-token-wrapper {
-    color: rgb(255, 255, 255);
     cursor: pointer;
     border-radius: 16px;
     outline: none;
@@ -300,6 +299,12 @@ color: #d8d8d8;
     background: #1a1a1a;
     display: flex;
     flex-direction: row;
+    transition: .5s;
+}
+
+.coin-popup-quick-select-token-wrapper:hover {
+	background: #212121;
+	transition: .5s;
 }
 
 .coin-popup-quick-select-token-image {
