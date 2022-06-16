@@ -329,3 +329,45 @@ padding-top: 14px;
 
     border: 1px solid #3d3d3d;
 }
+
+.token-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background: none;
+	transition: .5s;
+	padding: 10px;
+	border: none;
+}
+
+.token-container:hover {
+background: #212121;
+	transition: .5s;
+}
+
+.token-icon {
+	height: auto;
+	width: 24px;
+	filter: grayscale(100%);
+}
+
+.token-name {
+    padding-left: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: #d8d8d8;
+}
+
+.coin-popup-tokens-container {
+	display: flex;
+	flex-direction: column;
+	max-height: 310px;
+	overflow: auto;
+	 -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.coin-popup-tokens-container::-webkit-scrollbar {
+  display: none;
+}

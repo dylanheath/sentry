@@ -10,12 +10,20 @@ import USDtz from '../../assets/tokens/USDtz.svg';
 import PLENTY from '../../assets/tokens/PLENTY.png';
 import tzBTC from '../../assets/tokens/tzBTC.svg';
 
+// utils
+import { Tokens } from '../../utils/trade/tokens';
+
 export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoInput,
  setOneInput, setTwoInput, setPopupStateOne, setPopupStateTwo} :
 {popupStateOne:boolean, popupStateTwo:boolean, OneInput:string, TwoInput:string,
  setOneInput:any, setTwoInput:any, setPopupStateOne:any,
  setPopupStateTwo:any}) {
-
+  const tokensList = Tokens.tokens.map((token:any) =>
+    <button className="token-container">
+      <img className="token-icon" loading="lazy" src={token.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${token.metadata.thumbnailUri.slice(7)}` : token.metadata.thumbnailUri} />
+      <p className="token-name">{token.metadata.symbol}</p>
+    </button>
+  );
   return (
     <div className="coin-popup-box">
       <div className="coin-popup-header-container">
@@ -56,6 +64,9 @@ export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoI
         </div>
 	<div className="coin-popup-divider-container">
           <hr className="coin-popup-divider"></hr>
+	</div>
+	<div className="coin-popup-tokens-container">
+	  {tokensList}
 	</div>
 
     </div>
