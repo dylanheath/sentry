@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 // components
 import Swap from '../components/trade/swap';
@@ -11,8 +11,16 @@ import TradeBox from '../components/trade/trade';
 import './trade.css';
 
 export default function Trade() {
-  const [tradeOption, setTradeOptions] = useState<string>();
+  const [tradeOption, setTradeOption] = useState<string>();
   const { id } = useParams();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (id !== "send" && id !== "swap" && id !== "liquidity") {
+      navigate("/trade/send");
+    } else {
+      setTradeOption(id);
+    } 
+  })
   return (
     <div className="Trade">
       {id == null && (
@@ -26,9 +34,9 @@ export default function Trade() {
 	 <div className="trade-container">
 	  <div className="trade-options-wrapper">
            <div className="trade-option-container">
-              <button className="trade-option-button">Send</button>
-	      <button className="trade-option-button">Swap</button>
-              <button className="trade-option-button">Liquidity</button>
+              <Link to={"/trade/send"} className="trade-option-button" style={tradeOption == "send" ?{background: "#212121"} : {}}>Send</Link>
+	      <Link to={"/trade/swap"} className="trade-option-button" style={tradeOption == "swap" ?{background: "#212121"} : {}}>Swap</Link>
+              <Link to={"/trade/liquidity"} className="trade-option-button" style={tradeOption == "liquidity" ?{background: "#212121"} : {}}>Liquidity</Link>
             </div>
 	   </div>
 	 </div>

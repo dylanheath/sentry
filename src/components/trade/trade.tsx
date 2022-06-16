@@ -61,7 +61,7 @@ export default function TradeBox() {
             <input className="trade-component-input" defaultValue={(0).toFixed(2)} />
             <button className="trade-component-coin-select-container" onClick={() =>setPopupOne(true)}>
 	      <div className="trade-component-coin-select-image-container">
-	        <img className="trade-component-coin-select-image" src={coinInputOne.metadata.thumbnailUri} />
+	        <img className="trade-component-coin-select-image" src={coinInputOne.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${coinInputOne.metadata.thumbnailUri.slice(7)}` : coinInputOne.metadata.thumbnailUri} />
 	      </div>
 	      <p className="trade-component-coin-name">{coinInputOne.metadata.symbol}</p>
 	      <div className="trade-component-coin-select-arrow-container">
@@ -83,7 +83,7 @@ export default function TradeBox() {
             <input className="trade-component-input" defaultValue={(0).toFixed(2)} />
 	    <button className="trade-component-coin-select-container" onClick={() => setPopupTwo(true)}>
 	      <div className="trade-component-coin-select-image-container">
-	        <img className="trade-component-coin-select-image" src={coinInputTwo.metadata.thumbnailUri} />
+	        <img className="trade-component-coin-select-image" src={coinInputTwo.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${coinInputTwo.metadata.thumbnailUri.slice(7)}` : coinInputTwo.metadata.thumbnailUri} />
 	      </div>
 	      <p className="trade-component-coin-name">{coinInputTwo.metadata.symbol}</p>
 	      <div className="trade-component-coin-select-arrow-container">
