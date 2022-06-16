@@ -1,6 +1,7 @@
 import { TezosToolkit } from '@taquito/taquito';
 import { BeaconWallet } from '@taquito/beacon-wallet';
 import { ColorMode, Network, NetworkType, TezosOperationType } from '@airgap/beacon-sdk';
+import { swap, batchify } from "@quipuswap/sdk";
 
 const Tezos = new TezosToolkit('https://mainnet.smartpy.io');
 const network: Network = { type: NetworkType.MAINNET };
@@ -9,6 +10,11 @@ const wallet = new BeaconWallet({
   preferredNetwork: network.type,
 });
 Tezos.setWalletProvider(wallet);
+
+const factories = {
+  fa1_2Factory: "KT1HrQWkSFe7ugihjoMWwQ7p8ja9e18LdUFn",
+  fa2Factory: "KT1Dx3SZ6r4h2BZNQM8xri1CtsdNcAoXLGZB",
+};
 
 const theme = localStorage.getItem("theme");
   wallet.client.setColorMode(ColorMode.LIGHT);
@@ -65,63 +71,6 @@ const getAddress = async () => {
 // Send operations
 // eslint-disable-next-line no-unused-vars
 // @ts-ignore
-export const sendXTZ = async (SendData) => {
-  // eslint-disable-next-line no-unused-vars
-  console.log(SendData);
-  try {
-    const hash = await wallet.sendOperations([
-      {
-        kind: TezosOperationType.TRANSACTION,
-        destination: SendData.userAddress, // Send to ourselves
-        amount: SendData.mutezAmount, // Amount in mutez, the smallest unit in Tezos
-      },
-    ]);
-    const explorerLink = await wallet.client.blockExplorer.getTransactionLink(
-      hash,
-      network,
-    );
-    const TransactionData = {
-      transactionLink: explorerLink,
-      Sentstatus: true,
-    };
-    return TransactionData;
-  } catch {
-    const TransactionData = {
-      transactionLink: null,
-      Sentstatus: false,
-    };
-    return TransactionData;
-  }
-};
-// eslint-disable-next-line no-unused-vars
-// @ts-ignore
-export const sendUSDtz = async (SendData) => {
-  const address = await wallet.getPKH();
-  const contract = await Tezos.wallet.at(
-    'KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn',
-  );
-  console.log(SendData);
-  const result = await contract.methods
-    .transfer(
-      address,
-      address,
-      1,
-    )
-    .send();
-  try {
-    const TransactionData = {
-      transactionLink: result.opHash,
-      Sentstatus: true,
-    };
-    return TransactionData;
-  } catch {
-    const TransactionData = {
-      transactionLink: null,
-      Sentstatus: false,
-    };
-    return TransactionData;
-  }
-};
 
 export {
   connectWallet,

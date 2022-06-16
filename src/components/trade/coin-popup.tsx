@@ -45,33 +45,6 @@ export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoI
           <input className="coin-popup-search-container" type="text" placeholder="Search for Tokens" />
       </div>
       <div className="coin-popup-quick-select-tokens-container">
-        <div className="coin-popup-quick-select-token-wrapper">
-	  <div className="coin-popup-quick-select-token-image-container">
-            <img className="coin-popup-quick-select-token-image" src={PLENTY} />
-	  </div>
-	  <p className="coin-popup-quick-select-token-name">PLENTY</p>
-	</div>
-
-        <div className="coin-popup-quick-select-token-wrapper">
-	  <div className="coin-popup-quick-select-token-image-container">
-            <img className="coin-popup-quick-select-token-image" src={CTEZ} />
-	  </div>
-	  <p className="coin-popup-quick-select-token-name">CTEZ</p>
-	</div>
-
-        <div className="coin-popup-quick-select-token-wrapper">
-	  <div className="coin-popup-quick-select-token-image-container">
-            <img className="coin-popup-quick-select-token-image" src={tzBTC} />
-	  </div>
-	  <p className="coin-popup-quick-select-token-name">tzBTC</p>
-	</div>
-
-        <div className="coin-popup-quick-select-token-wrapper">
-	  <div className="coin-popup-quick-select-token-image-container">
-            <img className="coin-popup-quick-select-token-image" src={USDtz} />
-	  </div>
-	  <p className="coin-popup-quick-select-token-name">USDtz</p>
-	</div>
         </div>
 	<div className="coin-popup-divider-container">
           <hr className="coin-popup-divider"></hr>

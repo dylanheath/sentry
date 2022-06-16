@@ -14,7 +14,7 @@ import XTZ from '../../assets/tokens/XTZ.png';
 // components
 import CoinPopup from './coin-popup';
 
-export default function TradeBox() {
+export default function TradeBox({option} : {option:any}) {
   const [tradeSelect, setTradeSelect] = useState<number>();
   const [popupOne, setPopupOne] = useState<boolean>(false);
   const [popupTwo, setPopupTwo] = useState<boolean>(false);
@@ -96,7 +96,7 @@ export default function TradeBox() {
       </div>
       <div className="trade-component-complete-button-wrapper">
         <button className="trade-component-complete-button">
-          Send
+          {option == "send" ? "Send" : option == "swap" ? "Swap" : option == "liquidity" ? "Add Liquidity" : "error"}
 	</button>
       </div>
      </div>

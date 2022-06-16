@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { swap, batchify } from "@quipuswap/sdk";
 
 // components
 import Swap from '../components/trade/swap';
@@ -37,11 +38,12 @@ export default function Trade() {
               <Link to={"/trade/send"} className="trade-option-button" style={tradeOption == "send" ?{background: "#212121"} : {}}>Send</Link>
 	      <Link to={"/trade/swap"} className="trade-option-button" style={tradeOption == "swap" ?{background: "#212121"} : {}}>Swap</Link>
               <Link to={"/trade/liquidity"} className="trade-option-button" style={tradeOption == "liquidity" ?{background: "#212121"} : {}}>Liquidity</Link>
+	      <svg className="trade-settings-icon" viewBox="0 0 24 24" width="20" height="auto" role="img" style={{fill: "#d8d8d8"}}><path d="M 13.787 3.805 C 13.925 4.376 14.327 4.846 14.87 5.071 C 15.412 5.296 16.03 5.248 16.531 4.942 C 18.178 3.939 20.062 5.822 19.058 7.469 C 18.752 7.97 18.703 8.588 18.928 9.13 C 19.153 9.673 19.624 10.075 20.195 10.213 C 22.068 10.667 22.068 13.332 20.195 13.787 C 19.624 13.925 19.154 14.328 18.93 14.87 C 18.705 15.413 18.753 16.03 19.058 16.531 C 20.061 18.178 18.178 20.062 16.531 19.058 C 16.03 18.753 15.413 18.706 14.87 18.93 C 14.328 19.155 13.926 19.625 13.787 20.195 C 13.333 22.068 10.668 22.068 10.213 20.195 C 10.075 19.624 9.672 19.154 9.13 18.93 C 8.587 18.705 7.97 18.753 7.469 19.058 C 5.822 20.061 3.938 18.178 4.942 16.531 C 5.248 16.03 5.296 15.412 5.071 14.87 C 4.846 14.327 4.376 13.925 3.805 13.787 C 1.932 13.333 1.932 10.668 3.805 10.213 C 4.375 10.074 4.845 9.672 5.07 9.13 C 5.294 8.587 5.247 7.97 4.942 7.469 C 3.939 5.822 5.822 3.938 7.469 4.942 C 7.97 5.247 8.587 5.294 9.129 5.069 C 9.672 4.845 10.074 4.374 10.212 3.804 C 10.668 1.932 13.332 1.932 13.788 3.804 Z M 12 15.6 C 13.988 15.6 15.6 13.988 15.6 12 C 15.6 10.012 13.988 8.4 12 8.4 C 10.012 8.4 8.4 10.012 8.4 12 C 8.4 13.988 10.012 15.6 12 15.6 Z"></path></svg>
             </div>
 	   </div>
 	 </div>
          <div className="trade-component-wrapper">
-	   <TradeBox /> 
+	   <TradeBox option={id} /> 
 	 </div>
 
          </>

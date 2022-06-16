@@ -11,7 +11,7 @@ padding-top: 0px;
 
 .trade-option-container {
     display: flex;
-    align-items: left;
+    align-items: center;
     grid-gap: 6px;
     gap: 6px;
     font-size: 13px;
@@ -187,4 +187,10 @@ width: 100%;
  justify-content: space-between;
  max-height: 30px;
  height: 100%;
+}
+
+.trade-settings-icon:hover path {
+	fill: #919191;
+	transition: .2s;
+	cursor: pointer;
 }

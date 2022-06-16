@@ -327,7 +327,7 @@ color: #d8d8d8;
 }
 
 .coin-popup-divider-container {
-padding-top: 14px;
+padding-top: 0px;
 }
  
 .coin-popup-divider {
@@ -367,7 +367,7 @@ background: #212121;
 .coin-popup-tokens-container {
 	display: flex;
 	flex-direction: column;
-	max-height: 310px;
+	max-height: 400px;
 	overflow: auto;
 	 -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
