@@ -19,6 +19,8 @@ export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoI
  setOneInput:any, setTwoInput:any, setPopupStateOne:any,
  setPopupStateTwo:any}) {
 
+const [favorite, setFavorite] = useState<Array<any>>([]);
+
  const handleSelection = (token:any) => {
 	 if (popupStateOne == true && popupStateTwo == false) {
 	   setOneInput(token);
@@ -29,11 +31,31 @@ export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoI
 	 } 
  }
 
+ const handleFavorite = (token:object) => {
+   const favorites = [...favorite];
+   favorites.push(token);
+   setFavorite(favorites);
+ }
+
+ const removeFavorite = (token:object) => {
+   const favorites = [...favorite];
+   const tokenIndex = favorites.indexOf(token);
+   favorites.splice(tokenIndex);
+   setFavorite(favorites);
+ }
+
   const tokensList = Tokens.tokens.map((token:any) =>
-    <button className="token-container" onClick={() => OneInput === token ? "" : TwoInput === token ? "" : handleSelection(token)} style={ OneInput === token ? {WebkitFilter: "blur(2px)", msFilter: "blur(2px)"} : TwoInput === token ? {WebkitFilter: "blur(2px)", msFilter: "blur(2px)"} : {WebkitFilter: "unset", msFilter: "unset"}}>
-      <img className="token-icon" loading="lazy" src={token.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${token.metadata.thumbnailUri.slice(7)}` : token.metadata.thumbnailUri} />
-      <p className="token-name">{token.metadata.symbol}</p>
-    </button>
+    <div className="token-wrapper">
+      <button className="token-container" onClick={() => OneInput === token ? "" : TwoInput === token ? "" : handleSelection(token)} style={ OneInput === token ? {WebkitFilter: "blur(2px)", msFilter: "blur(2px)"} : TwoInput === token ? {WebkitFilter: "blur(2px)", msFilter: "blur(2px)"} : {WebkitFilter: "unset", msFilter: "unset"}}>
+        <div className="token-info-container">
+          <img className="token-icon" loading="lazy" src={token.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${token.metadata.thumbnailUri.slice(7)}` : token.metadata.thumbnailUri} />
+          <p className="token-name">{token.metadata.symbol}</p>
+        </div>
+      </button>
+      <div className="token-favorite-icon-container">
+        <svg className="token-favorite-icon" onClick={() => favorite.includes(token) ? removeFavorite(token) :  handleFavorite(token)} style={favorite.includes(token) ? {fill: "#d8d8d8"} : {fill: "rgb(70, 70,70)"}} viewBox="0 0 24 24" width="16" height="auto" role="img"><path d="M18.7882 18.7881C16.9879 20.5885 14.5461 21.5999 12 21.5999C9.45392 21.5999 7.01212 20.5885 5.21177 18.7881C3.41142 16.9878 2.39999 14.546 2.39999 11.9999C2.39999 9.45382 3.41142 7.01203 5.21177 5.21168C7.01212 3.41133 9.45392 2.3999 12 2.3999C14.5461 2.3999 16.9879 3.41133 18.7882 5.21168C20.5886 7.01203 21.6 9.45382 21.6 11.9999C21.6 14.546 20.5886 16.9878 18.7882 18.7881ZM12 17.9999C15.3137 17.9999 18 15.3136 18 11.9999C18 8.68619 15.3137 5.9999 12 5.9999C8.68629 5.9999 5.99999 8.68619 5.99999 11.9999C5.99999 15.3136 8.68629 17.9999 12 17.9999Z"></path></svg>
+      </div>
+    </div>
   );
   return (
     <div className="coin-popup-box">

@@ -28,7 +28,7 @@ export default function Settings({popup, setPopup, slipp, setSlipp} :
 	  </button>
         </div>
         <div className="settings-input-container">
-          <input className="settings-input" placeholder="0.00" defaultValue={(0).toFixed(2)} />
+          <input className="settings-input" placeholder="0.00" />
         </div>
       </div>
     </div>

@@ -333,10 +333,15 @@ position: absolute;
     grid-gap: 8px;
     gap: 8px;
     display: flex;
+    padding-left: 6px;
 }
 
 .settings-options-wrapper {
  display: flex;
  flex-direction: column;
  justify-content: center;
+}
+
+.token-favorite-container {
+
 }

@@ -346,12 +346,10 @@ padding-top: 0px;
 	transition: .5s;
 	padding: 10px;
 	border: none;
+	justify-content: space-between;
+	width: 100%;
 }
 
-.token-container:hover {
-background: #212121;
-	transition: .5s;
-}
 
 .token-icon {
 	height: auto;
@@ -367,6 +365,12 @@ background: #212121;
     color: #d8d8d8;
 }
 
+
+.token-info-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
 .coin-popup-tokens-container {
 	display: flex;
 	flex-direction: column;
@@ -382,4 +386,32 @@ background: #212121;
 
 .settings-component {
 
+}
+
+.token-favorite-icon {
+	transition: .2s;
+}
+
+.token-favorite-icon:hover path {
+  fill: #d8d8d8;
+  transition: .2s;
+}
+
+.token-favorite-icon-container {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.token-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	background: none;
+	transition: .2s;
+}
+
+.token-wrapper:hover {
+	background: #212121;
+	transition: .2s;
 }
