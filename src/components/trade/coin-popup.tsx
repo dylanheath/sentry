@@ -69,6 +69,12 @@ export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoI
       </div>
     </div>
   );
+  const favoriteTokens = favorite.map((token:any) => 
+    <div className="favorite-token-wrapper" onClick={() => handleSelection(token)}>
+      <img className="favorite-token-image" src={token.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${token.metadata.thumbnailUri.slice(7)}` : token.metadata.thumbnailUri} />
+      <p className="favorite-token-name">{token.metadata.symbol}</p> 
+    </div>
+  )
   return (
     <div className="coin-popup-box">
       <div className="coin-popup-header-container">
@@ -78,6 +84,35 @@ export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoI
       <div className="coin-popup-search-wrapper">
           <input className="coin-popup-search-container" type="text" placeholder="Search for Tokens" />
       </div>
+      {favoriteTokens.length > 0 && (
+        <div className="token-favorites-container">
+          {favoriteTokens} 
+        </div>
+      )}
+      {favoriteTokens.length < 1 && (
+        <div className="token-favorites-none">
+	  <div className="favorite-token-wrapper" onClick={() => handleSelection(Tokens.tokens[8])}>
+            <img className="favorite-token-image" src={Tokens.tokens[8].metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${Tokens.tokens[8].metadata.thumbnailUri.slice(7)}` : Tokens.tokens[8].metadata.thumbnailUri} />
+            <p className="favorite-token-name">{Tokens.tokens[8].metadata.symbol}</p> 
+          </div>
+          <div className="favorite-token-wrapper" onClick={() => handleSelection(Tokens.tokens[7])}>
+            <img className="favorite-token-image" src={Tokens.tokens[7].metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${Tokens.tokens[7].metadata.thumbnailUri.slice(7)}` : Tokens.tokens[7].metadata.thumbnailUri} />
+            <p className="favorite-token-name">{Tokens.tokens[7].metadata.symbol}</p> 
+          </div>
+          <div className="favorite-token-wrapper" onClick={() => handleSelection(Tokens.tokens[36])}>
+            <img className="favorite-token-image" src={Tokens.tokens[36].metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${Tokens.tokens[36].metadata.thumbnailUri.slice(7)}` : Tokens.tokens[36].metadata.thumbnailUri} />
+            <p className="favorite-token-name">{Tokens.tokens[36].metadata.symbol}</p> 
+          </div>
+          <div className="favorite-token-wrapper" onClick={() => handleSelection(Tokens.tokens[50])}>
+            <img className="favorite-token-image" src={Tokens.tokens[50].metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${Tokens.tokens[50].metadata.thumbnailUri.slice(7)}` : Tokens.tokens[50].metadata.thumbnailUri} />
+            <p className="favorite-token-name">{Tokens.tokens[50].metadata.symbol}</p> 
+          </div>
+          <div className="favorite-token-wrapper" onClick={() => handleSelection(Tokens.tokens[33])}>
+            <img className="favorite-token-image" src={Tokens.tokens[33].metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${Tokens.tokens[33].metadata.thumbnailUri.slice(7)}` : Tokens.tokens[33].metadata.thumbnailUri} />
+            <p className="favorite-token-name">{Tokens.tokens[33].metadata.symbol}</p> 
+          </div>
+	</div>
+      )}
       <div className="coin-popup-quick-select-tokens-container">
         </div>
 	<div className="coin-popup-divider-container">
