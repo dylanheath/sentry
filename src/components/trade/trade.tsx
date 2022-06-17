@@ -18,6 +18,7 @@ export default function TradeBox({option} : {option:any}) {
   const [tradeSelect, setTradeSelect] = useState<number>();
   const [popupOne, setPopupOne] = useState<boolean>(false);
   const [popupTwo, setPopupTwo] = useState<boolean>(false);
+  const [settingPopup, setSettingsPopup] = useState<boolean>(false);
   const [coinInputOne, setCoinInputOne] = useState<any>({metadata: {
 	  name: "Tezos",
 	  symbol: "TEZ",

@@ -194,3 +194,149 @@ width: 100%;
 	transition: .2s;
 	cursor: pointer;
 }
+
+.settings-container {
+position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    background: rgba(0,0,0,.4);
+    z-index: 100;
+    border: none;
+-webkit-animation: fadein 0.4s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 0.4s; /* Firefox < 16 */
+        -ms-animation: fadein 0.4s; /* Internet Explorer */
+         -o-animation: fadein 0.4s; /* Opera < 12.1 */
+            animation: fadein 0.4s;
+	    padding-bottom: 140px;
+
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.settings-component {
+    background: #1a1a1a;
+    z-index: 4;
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #3d3d3d;
+    max-width: 380px;
+    width: 100%;
+    height: 200px;
+}
+
+.settings-header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+ 
+.settings-header {
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 600;
+    color: #d8d8d8;
+}
+
+.settings-close:hover {
+	cursor: pointer;
+}
+
+.settings-options-container {
+	padding-top: 40px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 14px;
+	justify-content: center;
+}
+
+.settings-option {
+	    display: flex;
+    align-items: center;
+    grid-gap: 6px;
+    gap: 6px;
+    font-size: 14px;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #d8d8d8;
+    padding: 0 12px;
+    border-radius: 7px;
+    padding: 6px;
+    cursor: pointer;
+    transition: all .2s ease;
+    text-decoration: none;
+    transition: .5s;
+    border: none;
+    border: 1px solid #3d3d3d;
+    background: none;
+}
+
+.settings-input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 14px;
+}
+
+.settings-input {
+	    color: rgb(255, 255, 255);
+    cursor: pointer;
+    border-radius: 16px;
+    outline: none;
+    -webkit-user-select: none;
+    user-select: none;
+    border: none;
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #d8d8d8;
+    padding: 0px 8px;
+    height: 38px;
+    justify-content: space-between;
+    background: none;
+    border: 1px solid #3d3d3d;
+    background: #1a1a1a;
+    grid-gap: 8px;
+    gap: 8px;
+    display: flex;
+}
+
+.settings-options-wrapper {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+}
