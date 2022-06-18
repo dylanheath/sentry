@@ -41,7 +41,7 @@ export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoI
 
  const handleFavorite = (token:object) => {
    const favorites = [...favorite];
-   if (favorites.length < 5) {
+   if (favorites.length < 6) {
      favorites.push(token);
      setFavorite(favorites);
      localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -51,7 +51,7 @@ export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoI
  const removeFavorite = (token:object) => {
    const favorites = [...favorite];
    const tokenIndex = favorites.indexOf(token);
-   favorites.splice(tokenIndex);
+   favorites.splice(tokenIndex, 1);
    setFavorite(favorites);
    localStorage.setItem('favorites', JSON.stringify(favorites));
  }
