@@ -474,3 +474,36 @@ padding-top: 0px;
     color: #d8d8d8;
 }
 
+.trade-component-send-input-container {
+display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 20px;
+    border: 1px solid #3d3d3d;
+    z-index: 1;
+    width: initial;
+    transition: height 1s ease 0s;
+    padding: 0.6rem;
+    height: 60px;
+    transition: .5s;
+}
+
+.trade-component-send-input {
+height: 100%;
+background: none;
+outline:none;
+border: none;
+transition: .2s;
+font-weight: 600;
+    color: #d8d8d8;
+    font-size: 20px;
+}
+
+.trade-component-send-input::placeholder {
+ text-align: center;
+}
+
+.trade-component-send-input-container:focus-within {
+  transition: .2s;
+  border: 1px solid #d8d8d8;
+}
