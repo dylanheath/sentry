@@ -242,6 +242,7 @@
     height: 100%;
     width: 100%;
     transition: .2s;
+    color: #d8d8d8;
 }
 
 .coin-popup-search-wrapper {
