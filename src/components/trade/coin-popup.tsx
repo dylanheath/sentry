@@ -49,8 +49,8 @@ export default  function CoinPopup({popupStateOne, popupStateTwo, OneInput, TwoI
 
 const handleSearch = (e:any) => {
   const availableTokens = [...Tokens.tokens]
-  if (availableTokens.find((tk:any) => tk.metadata.symbol === e.toUpperCase() || tk.metadata.name === e)) {
-    setTokenSearch(availableTokens.find((tk:any) => tk.metadata.symbol === e.toUpperCase() || tk.metadata.name === e)); 
+  if (availableTokens.find((tk:any) => tk.metadata.symbol === e.toUpperCase() || tk.metadata.name === e || tk.metadata.symbol.includes(e.toUpperCase()))) {
+    setTokenSearch(availableTokens.find((tk:any) => tk.metadata.symbol === e.toUpperCase() || tk.metadata.name === e || tk.metadata.symbol.includes(e.toUpperCase()))); 
   } else {
     setTokenSearch(false);
     console.log('dakwdnlkwd')
