@@ -488,6 +488,10 @@ display: flex;
     transition: .5s;
 }
 
+.trade-component-liquidity-container {
+
+}
+
 .trade-component-send-input {
 height: 100%;
 background: none;
