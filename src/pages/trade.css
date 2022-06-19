@@ -410,12 +410,15 @@ justify-content: center;
   max-width: 400px;
   width: 100%;
   gap:6px;
+  padding-right: 10px;
 }
 
 .block {
-    font-size: 15px;
+font-size: 15px;
     color: #3d3d3d;
+    transition: 5s;
 }
+
 
 .block-status-wrapper {
 	    display: flex;
@@ -430,14 +433,65 @@ justify-content: center;
     color: rgb(70, 70, 70);
 }
 
-.block-status-active {
+.block-status-sync {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: rgba(26,161,104,.15);
-    border: 1.2px solid rgba(26,161,104,.15);
-    animation: blinker 2s infinite;
+    background: #919191;
+    border: 1.2px solid #d8d8d8;
+    animation: sync 2s infinite;
     transition: .5s;
 }
+@keyframes sync {
+  50% {
+    background: #d8d8d8 ;
+  },
+  100% {
+    opacity: 0;
+  }
+}
 
+.block-status-active {
+width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d8d8d8;
+    border: 1.2px solid #d8d8d8;
+    animation: sync 2s infinite;
+    transition: .5s;
+    animation: .4s rollout;
 
+}
+
+@keyframes rollout {
+  0% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes status {
+  50% {
+    background:#d8d8d8 ;
+  },
+  100% {
+    opacity: 0;
+  }
+}
+.block-active {
+    font-size: 15px;
+    color: #3d3d3d;
+    transition: 5s;
+    animation: .6s newblock;
+}
+
+@keyframes newblock {
+	50% {
+	  color: #d8d8d8;  
+	},
+	100% {
+	  color: #3d3d3d;
+	}
+}

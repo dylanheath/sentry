@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { swap, batchify } from "@quipuswap/sdk";
+
+//web socket
 import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
+
 // components
 import Swap from '../components/trade/swap';
 import Send from '../components/trade/send';
@@ -18,6 +21,7 @@ export default function Trade({blockNumber}: {blockNumber:number}) {
   const [settingsPopup, setSettingsPopup] = useState<boolean>(false);
   const [slippage, setSlippage] = useState<number>(0.005);
   const navigate = useNavigate();
+  const [blockAnimation, setBlockAnimation] = useState<boolean>(false);
   
   useEffect(() => {
     if (id !== "send" && id !== "swap" && id !== "liquidity") {
@@ -27,7 +31,8 @@ export default function Trade({blockNumber}: {blockNumber:number}) {
       setTradeOption(id);
       document.title = `sentry | trade`
     } 
-  }, [])
+  }, [blockNumber])
+
   return (
     <div className="Trade">
       {id == null && (
@@ -106,9 +111,9 @@ export default function Trade({blockNumber}: {blockNumber:number}) {
 	   <div className="block-container">
 	     {blockNumber !== 0 && (
 	       <>
-                 <p className="block">{blockNumber}</p>
+                 <p className="block-active" key={blockNumber}>{blockNumber}</p>
 		 <div className="block-status">
-                   <div className="block-status-active">
+                   <div className="block-status-active" key={blockNumber}>
 		   </div>
 		 </div>
 	       </>
@@ -117,7 +122,7 @@ export default function Trade({blockNumber}: {blockNumber:number}) {
 	       <>
 	         <p className="block">syncing block</p>
 	         <div className="block-status">
-                   <div className="block-status-active">
+                   <div className="block-status-sync">
 		   </div>
 	         </div>
 	       </>
