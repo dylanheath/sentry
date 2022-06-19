@@ -26,11 +26,15 @@ import {cen_node} from './utils/nodes/cen';
 import {connectWallet, disconnectWallet, getActiveAccount, checkIfWalletConnected, getAddress} from
 './utils/wallet/wallet';
 
+// websocket
+import {tzktBlocks} from './utils/blocks/blocks';
+
 function App() {
   const [User, setUser] = useState<contextfields>({name: null, email: null, address: null, contacts: null, status: false });
   const context = useContext(UserContext);
   const providerValue = useMemo(() => ({ User, setUser }), [User, setUser]);
   const [active, setActive] = useState<boolean>(false);
+  const [block, setBlock] = useState<number>(0);
 
   const WalletConnect = async () => {
     const activeAccount = await getActiveAccount();
@@ -96,8 +100,8 @@ function App() {
               <div className="app-content">
                 <Routes>
 	          <Route path="/" element={<Home activeWallet={active} />} />
-		  <Route path="/trade" element={<Trade />} />
-		  <Route path="/trade/:id" element={<Trade />} />
+		  <Route path="/trade" element={<Trade blockNumber={block} />} />
+		  <Route path="/trade/:id" element={<Trade blockNumber={block} />} />
 		  <Route path="/explore" element={<Explore />} />
 		  <Route path="/market" element={<Markets />} />
 		  <Route path="/market/:id" element={<Market />} />
