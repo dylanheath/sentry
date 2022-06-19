@@ -44,7 +44,7 @@ export default function Trade({blockNumber}: {blockNumber:number}) {
       await connection.start();
       await connection.invoke("SubscribeToBlocks");
      } catch {
-       console.log("dwdwnd");
+       console.log("block failed to sync");
      }
   }
 
