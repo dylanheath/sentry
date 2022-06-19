@@ -12,42 +12,13 @@ import Settings from '../components/trade/settings';
 // styling
 import './trade.css';
 
-//blocks
-import Blocks from '../components/trade/blocks';
-
 export default function Trade({blockNumber}: {blockNumber:number}) {
   const [tradeOption, setTradeOption] = useState<string>();
   const { id } = useParams();
   const [settingsPopup, setSettingsPopup] = useState<boolean>(false);
   const [slippage, setSlippage] = useState<number>(0.005);
-  const [block, setBlock] = useState<number>(0);
   const navigate = useNavigate();
   
-  const handleBlock = (msg:any) => {
-    if (msg.type === 1) {
-      console.log(`block: ${msg.data[0].level}`)
-      console.log(msg);
-      setBlock(msg.data.level);
-    } else if (msg.type === 6) {
-      console.log(`block syncing: ${msg.state}`)
-      setBlock(msg.state);
-    }
-  }
-  const getBlock = async () => {
-     try {
-       const connection = new HubConnectionBuilder()
-         .withUrl("https://api.tzkt.io/v1/events")
-         .configureLogging(LogLevel.Information)
-         .build();      
-
-      connection.on("blocks", (msg:any) => { handleBlock(msg) })
-      await connection.start();
-      await connection.invoke("SubscribeToBlocks");
-     } catch {
-       console.log("block failed to sync");
-     }
-  }
-
   useEffect(() => {
     if (id !== "send" && id !== "swap" && id !== "liquidity") {
       navigate("/trade/send");
@@ -56,7 +27,6 @@ export default function Trade({blockNumber}: {blockNumber:number}) {
       setTradeOption(id);
       document.title = `sentry | trade`
     } 
-    getBlock();
   }, [])
   return (
     <div className="Trade">
@@ -132,6 +102,28 @@ export default function Trade({blockNumber}: {blockNumber:number}) {
 	  </div>
 	  </>
          )}
+	 <div className="block-wrapper">
+	   <div className="block-container">
+	     {blockNumber !== 0 && (
+	       <>
+                 <p className="block">{blockNumber}</p>
+		 <div className="block-status">
+                   <div className="block-status-active">
+		   </div>
+		 </div>
+	       </>
+	     )}
+             {blockNumber == 0 && (
+	       <>
+	         <p className="block">syncing block</p>
+	         <div className="block-status">
+                   <div className="block-status-active">
+		   </div>
+	         </div>
+	       </>
+	     )}
+	   </div>
+	 </div>
       </div>
   )
 }

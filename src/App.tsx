@@ -8,6 +8,8 @@ import './App.css';
 // assets
 import SentryLogo from './assets/branding/sentry.png';
 
+// websocket
+import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 // pages
 import Home from './pages/home';
 import Trade from './pages/trade';
@@ -26,15 +28,37 @@ import {cen_node} from './utils/nodes/cen';
 import {connectWallet, disconnectWallet, getActiveAccount, checkIfWalletConnected, getAddress} from
 './utils/wallet/wallet';
 
-// websocket
-import {tzktBlocks} from './utils/blocks/blocks';
-
 function App() {
   const [User, setUser] = useState<contextfields>({name: null, email: null, address: null, contacts: null, status: false });
   const context = useContext(UserContext);
   const providerValue = useMemo(() => ({ User, setUser }), [User, setUser]);
   const [active, setActive] = useState<boolean>(false);
   const [block, setBlock] = useState<number>(0);
+
+  const handleBlock = (msg:any) => {
+    if (msg.type === 1) {
+      console.log(`block: ${msg.data[0].level}`)
+      setBlock(msg.data[0].level);
+    } else if (msg.type === 6) {
+      console.log(`block syncing: ${msg.state}`)
+      setBlock(msg.state);
+    }
+  }
+
+  const getBlock = async () => {
+     try {
+       const connection = new HubConnectionBuilder()
+         .withUrl("https://api.tzkt.io/v1/events")
+         .configureLogging(LogLevel.Information)
+         .build();      
+
+      connection.on("blocks", (msg:any) => { handleBlock(msg) })
+      await connection.start();
+      await connection.invoke("SubscribeToBlocks");
+     } catch {
+       console.log("block failed to sync");
+     }
+  }
 
   const WalletConnect = async () => {
     const activeAccount = await getActiveAccount();
@@ -59,6 +83,7 @@ function App() {
       }
     }
     WalletCheck();
+    getBlock();
   }, [])
   return (
     <div className="App">
