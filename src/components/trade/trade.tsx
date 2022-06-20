@@ -17,7 +17,8 @@ import { tezosPrices } from '../../utils/price/tezos';
 // components
 import CoinPopup from './coin-popup';
 
-export default function TradeBox({option, blocks} : {option:any, blocks:any}) {
+export default function TradeBox({option, blocks, update, setUpdate} : {option:any,
+  blocks:any, update:boolean, setUpdate:any}) {
   const [tradeSelect, setTradeSelect] = useState<number>();
   const [popupOne, setPopupOne] = useState<boolean>(false);
   const [popupTwo, setPopupTwo] = useState<boolean>(false);
@@ -40,25 +41,33 @@ export default function TradeBox({option, blocks} : {option:any, blocks:any}) {
 
  useEffect(() => {
     const getPrices = async () => {
+      setUpdate(true);
       const prices = await tezosPrices() 
         .then((result:any) => {
           console.log("Updating Prices");
 	  setPriceList(result);
 	  if (coinInputOne.metadata.symbol === "TEZ") {
             setCoinInputOneUsd(result.xtzusdValue * amountOne);
+	    setUpdate(false)
 	  }  else {
 	    const tokenOneIndex = result.contracts.findIndex((token:any) => token.symbol === coinInputOne.metadata.symbol)
 	    if (tokenOneIndex) {
               setCoinInputOneUsd(amountOne * result.contracts[tokenOneIndex].currentPrice);
-	    }
-            const tokenTwoIndex = result.contracts.findIndex((token:any) => token.symbol === coinInputTwo.symbol)
-            if (option === "swap" && tokenTwoIndex ) {
-              setCoinInputTwoUsd(amountTwo * result.contracts[tokenTwoIndex].currentPrice);
+	      setUpdate(false);
 	    }
 	  }
+	  if (coinInputOne.metadata.symbol === "TEZ" && option === "swap") {
+	    setCoinInputTwoUsd(result.xtzusdValue * amountTwo)
+	    setUpdate(false)
+          } else if (option === "swap") {
+            const tokenTwoIndex = result.contracts.findIndex((token:any) => token.symbol === coinInputTwo.metadata.symbol)
+            setCoinInputTwoUsd(amountTwo * result.contracts[tokenTwoIndex].currentPrice);
+	    setUpdate(false)
+          }
         })
 	.catch(() => {
           console.log("Failed to Update Price");
+	  setUpdate(false);
 	})
     }
     getPrices();
@@ -105,7 +114,7 @@ export default function TradeBox({option, blocks} : {option:any, blocks:any}) {
 	    </button>
 	  </div>
 	</div>
-	<p className="trade-component-converted-price">${(coinInputOneUsd).toFixed(2)}</p>
+	<p className="trade-component-converted-price" key={coinInputOneUsd}>${(coinInputOneUsd).toFixed(2)}</p>
       </div>
       <div className="trade-component-arrow-container">
         <div className="trade-component-arrow-wrapper">
@@ -128,7 +137,7 @@ export default function TradeBox({option, blocks} : {option:any, blocks:any}) {
 	    </button>
 	  </div>
 	</div>
-	<p className="trade-component-converted-price">0.00</p>
+	<p className="trade-component-converted-price" key={coinInputTwoUsd}>${(coinInputTwoUsd).toFixed(2)}</p>
       </div>
       )}
       {option === "send" &&

@@ -405,7 +405,7 @@ justify-content: center;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
   padding-top: 14px;
   max-width: 400px;
   width: 100%;
@@ -413,6 +413,19 @@ justify-content: center;
   padding-right: 10px;
 }
 
+.block-status-sync-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+}
+
+.block-status-active-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
 .block {
 font-size: 15px;
     color: #3d3d3d;
@@ -495,3 +508,64 @@ width: 7px;
 	  color: #3d3d3d;
 	}
 }
+
+.price-update-status {
+display: flex;
+flex-direction: row;
+widith: 100%;
+justify-content: left;
+}
+
+.price-update {
+    font-size: 15px;
+    color: #3d3d3d;
+    transition: 5s;
+    animation: .6s newblock;
+}
+
+.price-update-status {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+}
+
+.price-update-icon {
+animation-name: spin;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+  -webkit-animation: rotate-center 0.8s ease-in-out 0.2s 10 both;
+	        animation: rotate-center 0.8s ease-in-out 1s 10 both;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
