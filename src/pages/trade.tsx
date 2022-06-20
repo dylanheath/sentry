@@ -60,7 +60,7 @@ export default function Trade({blockNumber}: {blockNumber:number}) {
 	   </div>
 	 </div>
          <div className="trade-component-wrapper">
-	   <TradeBox option={id} /> 
+	   <TradeBox option={id} blocks={blockNumber} /> 
 	 </div>
 
          </>

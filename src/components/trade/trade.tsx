@@ -11,14 +11,22 @@ import './trade.css';
 // tokens
 import XTZ from '../../assets/tokens/XTZ.png';
 
+// prices
+import { tezosPrices } from '../../utils/price/tezos';
+
 // components
 import CoinPopup from './coin-popup';
 
-export default function TradeBox({option} : {option:any}) {
+export default function TradeBox({option, blocks} : {option:any, blocks:any}) {
   const [tradeSelect, setTradeSelect] = useState<number>();
   const [popupOne, setPopupOne] = useState<boolean>(false);
   const [popupTwo, setPopupTwo] = useState<boolean>(false);
   const [settingPopup, setSettingsPopup] = useState<boolean>(false);
+  const [coinInputOneUsd, setCoinInputOneUsd] = useState<number>(0);
+  const [coinInputTwoUsd, setCoinInputTwoUsd] = useState<number>(0);
+  const [amountOne, setAmountOne] = useState<number>(0);
+  const [amountTwo, setAmountTwo] = useState<number>(0);
+  const [priceList, setPriceList] = useState<Array<string>>();
   const [coinInputOne, setCoinInputOne] = useState<any>({metadata: {
 	  name: "Tezos",
 	  symbol: "TEZ",
@@ -29,6 +37,32 @@ export default function TradeBox({option} : {option:any}) {
 	  symbol: "TEZ",
 	  thumbnailUri: XTZ,
           }, contractAddress: "tez"});
+
+ useEffect(() => {
+    const getPrices = async () => {
+      const prices = await tezosPrices() 
+        .then((result:any) => {
+          console.log("Updating Prices");
+	  setPriceList(result);
+	  if (coinInputOne.metadata.symbol === "TEZ") {
+            setCoinInputOneUsd(result.xtzusdValue * amountOne);
+	  }  else {
+	    const tokenOneIndex = result.contracts.findIndex((token:any) => token.symbol === coinInputOne.metadata.symbol)
+	    if (tokenOneIndex) {
+              setCoinInputOneUsd(amountOne * result.contracts[tokenOneIndex].currentPrice);
+	    }
+            const tokenTwoIndex = result.contracts.findIndex((token:any) => token.symbol === coinInputTwo.symbol)
+            if (option === "swap" && tokenTwoIndex ) {
+              setCoinInputTwoUsd(amountTwo * result.contracts[tokenTwoIndex].currentPrice);
+	    }
+	  }
+        })
+	.catch(() => {
+          console.log("Failed to Update Price");
+	})
+    }
+    getPrices();
+  }, [blocks])
   return (
   <>
    {popupOne == true && popupTwo == false && (
@@ -59,7 +93,7 @@ export default function TradeBox({option} : {option:any}) {
       <div className="trade-component-input-container">
         <div className="trade-component-input-select">
 	  <div className="trade-component-inputs-selection-container">
-            <input className="trade-component-input" defaultValue={(0).toFixed(2)} />
+            <input className="trade-component-input" defaultValue={(0).toFixed(2)} onChange={(e) => setAmountOne(Number(e.target.value))} />
             <button className="trade-component-coin-select-container" onClick={() =>setPopupOne(true)}>
 	      <div className="trade-component-coin-select-image-container">
 	        <img className="trade-component-coin-select-image" src={coinInputOne.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${coinInputOne.metadata.thumbnailUri.slice(7)}` : coinInputOne.metadata.thumbnailUri} />
@@ -71,7 +105,7 @@ export default function TradeBox({option} : {option:any}) {
 	    </button>
 	  </div>
 	</div>
-	<p className="trade-component-converted-price">0.00</p>
+	<p className="trade-component-converted-price">${(coinInputOneUsd).toFixed(2)}</p>
       </div>
       <div className="trade-component-arrow-container">
         <div className="trade-component-arrow-wrapper">
@@ -82,7 +116,7 @@ export default function TradeBox({option} : {option:any}) {
       <div className="trade-component-input-container">
         <div className="trade-component-input-select">
 	  <div className="trade-component-inputs-selection-container">
-            <input className="trade-component-input" defaultValue={(0).toFixed(2)} />
+            <input className="trade-component-input" defaultValue={(0).toFixed(2)} onChange={(e) => setAmountTwo(Number(e.target.value))} />
 	    <button className="trade-component-coin-select-container" onClick={() => setPopupTwo(true)}>
 	      <div className="trade-component-coin-select-image-container">
 	        <img className="trade-component-coin-select-image" src={coinInputTwo.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${coinInputTwo.metadata.thumbnailUri.slice(7)}` : coinInputTwo.metadata.thumbnailUri} />
