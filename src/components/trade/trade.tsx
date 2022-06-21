@@ -13,12 +13,13 @@ import XTZ from '../../assets/tokens/XTZ.png';
 
 // prices
 import { tezosPrices } from '../../utils/price/tezos';
+import { findDex, estimateTezInToken } from "@quipuswap/sdk";
 
 // components
 import CoinPopup from './coin-popup';
 
-export default function TradeBox({option, blocks, update, setUpdate} : {option:any,
-  blocks:any, update:boolean, setUpdate:any}) {
+export default function TradeBox({option, blocks, update, setUpdate, blockType} : {option:any,
+  blocks:any, update:boolean, setUpdate:any, blockType:any}) {
   const [tradeSelect, setTradeSelect] = useState<number>();
   const [popupOne, setPopupOne] = useState<boolean>(false);
   const [popupTwo, setPopupTwo] = useState<boolean>(false);
@@ -27,7 +28,7 @@ export default function TradeBox({option, blocks, update, setUpdate} : {option:a
   const [coinInputTwoUsd, setCoinInputTwoUsd] = useState<number>(0);
   const [amountOne, setAmountOne] = useState<number>(0);
   const [amountTwo, setAmountTwo] = useState<number>(0);
-  const [priceList, setPriceList] = useState<Array<string>>();
+  const [priceList, setPriceList] = useState<any>({xtzusdValue: 0, contracts: []});
   const [coinInputOne, setCoinInputOne] = useState<any>({metadata: {
 	  name: "Tezos",
 	  symbol: "TEZ",
@@ -39,39 +40,48 @@ export default function TradeBox({option, blocks, update, setUpdate} : {option:a
 	  thumbnailUri: XTZ,
           }, contractAddress: "tez"});
 
+  
  useEffect(() => {
     const getPrices = async () => {
       setUpdate(true);
       const prices = await tezosPrices() 
         .then((result:any) => {
           console.log("Updating Prices");
-	  setPriceList(result);
+	  setPriceList({xtzusdValue: result.xtzusdValue, contracts: result.contracts});
 	  if (coinInputOne.metadata.symbol === "TEZ") {
             setCoinInputOneUsd(result.xtzusdValue * amountOne);
-	    setUpdate(false)
+	    if (blockType === 1) {
+	      setUpdate(false)
+	    }  
 	  }  else {
 	    const tokenOneIndex = result.contracts.findIndex((token:any) => token.symbol === coinInputOne.metadata.symbol)
 	    if (tokenOneIndex) {
               setCoinInputOneUsd(amountOne * result.contracts[tokenOneIndex].currentPrice);
-	      setUpdate(false);
+	      if (blockType === 1 ) {
+	        setUpdate(false);
+	      }
 	    }
 	  }
 	  if (coinInputOne.metadata.symbol === "TEZ" && option === "swap") {
 	    setCoinInputTwoUsd(result.xtzusdValue * amountTwo)
-	    setUpdate(false)
+	    if (blockType === 1) {
+	      setUpdate(false)
+	    }
           } else if (option === "swap") {
             const tokenTwoIndex = result.contracts.findIndex((token:any) => token.symbol === coinInputTwo.metadata.symbol)
             setCoinInputTwoUsd(amountTwo * result.contracts[tokenTwoIndex].currentPrice);
-	    setUpdate(false)
+	    if (blockType === 1) {
+	      setUpdate(false)
+	    }
           }
         })
 	.catch(() => {
           console.log("Failed to Update Price");
-	  setUpdate(false);
 	})
     }
     getPrices();
   }, [blocks])
+
   return (
   <>
    {popupOne == true && popupTwo == false && (

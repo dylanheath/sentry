@@ -531,12 +531,8 @@ justify-content: left;
 }
 
 .price-update-icon {
-animation-name: spin;
-  animation-duration: 2000ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear; 
-  -webkit-animation: rotate-center 0.8s ease-in-out 0.2s 10 both;
-	        animation: rotate-center 0.8s ease-in-out 1s 10 both;
+  -webkit-animation: rotate-center 0.8s ease-in-out 0.4s both infinite;
+	        animation: rotate-center 0.8s ease-in-out 0.4s both infinite;
 }
 
 @keyframes spin {

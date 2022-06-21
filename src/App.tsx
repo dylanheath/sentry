@@ -34,14 +34,17 @@ function App() {
   const providerValue = useMemo(() => ({ User, setUser }), [User, setUser]);
   const [active, setActive] = useState<boolean>(false);
   const [block, setBlock] = useState<number>(0);
+  const [blockType, setBlockType] = useState<any>(0);
 
   const handleBlock = (msg:any) => {
     if (msg.type === 1) {
       console.log(`block: ${msg.data[0].level}`)
       setBlock(msg.data[0].level);
+      setBlockType(msg.type);
     } else if (msg.type === 6) {
       console.log(`block syncing: ${msg.state}`)
       setBlock(msg.state);
+      setBlockType(msg.type);
     }
   }
 
@@ -125,8 +128,8 @@ function App() {
               <div className="app-content">
                 <Routes>
 	          <Route path="/" element={<Home activeWallet={active} />} />
-		  <Route path="/trade" element={<Trade blockNumber={block} />} />
-		  <Route path="/trade/:id" element={<Trade blockNumber={block} />} />
+		  <Route path="/trade" element={<Trade blockNumber={block} type={blockType} />} />
+		  <Route path="/trade/:id" element={<Trade blockNumber={block} type={blockType} />} />
 		  <Route path="/explore" element={<Explore />} />
 		  <Route path="/market" element={<Markets />} />
 		  <Route path="/market/:id" element={<Market />} />
