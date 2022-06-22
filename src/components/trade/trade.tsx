@@ -14,6 +14,7 @@ import XTZ from '../../assets/tokens/XTZ.png';
 // prices
 import { tezosPrices } from '../../utils/price/tezos';
 import { findDex, estimateTezInToken } from "@quipuswap/sdk";
+import { tokenPriceOne } from '../../utils/wallet/wallet';
 
 // components
 import CoinPopup from './coin-popup';
@@ -28,7 +29,8 @@ export default function TradeBox({option, blocks, update, setUpdate, blockType} 
   const [coinInputTwoUsd, setCoinInputTwoUsd] = useState<number>(0);
   const [amountOne, setAmountOne] = useState<number>(0);
   const [amountTwo, setAmountTwo] = useState<number>(0);
-  const [priceList, setPriceList] = useState<any>({xtzusdValue: 0, contracts: []});
+  const [priceContracts, setPriceContracts] = useState<any>([]);
+  const [price, setPrice] = useState<number>(0);
   const [coinInputOne, setCoinInputOne] = useState<any>({metadata: {
 	  name: "Tezos",
 	  symbol: "TEZ",
@@ -47,7 +49,8 @@ export default function TradeBox({option, blocks, update, setUpdate, blockType} 
       const prices = await tezosPrices() 
         .then((result:any) => {
           console.log("Updating Prices");
-	  setPriceList({xtzusdValue: result.xtzusdValue, contracts: result.contracts});
+	  setPrice(result.xtzusdValue);
+	  setPriceContracts(result.contracts);
 	  if (coinInputOne.metadata.symbol === "TEZ") {
             setCoinInputOneUsd(result.xtzusdValue * amountOne);
 	    if (blockType === 1) {
@@ -75,12 +78,52 @@ export default function TradeBox({option, blocks, update, setUpdate, blockType} 
 	    }
           }
         })
-	.catch(() => {
-          console.log("Failed to Update Price");
+	.catch((err) => {
+          console.log(`Failed to Update Price with error ${err}`);
 	})
     }
     getPrices();
   }, [blocks])
+
+  useEffect(() => {
+    const updatePrice = async () => {
+      try {
+	if (coinInputOne.metadata.symbol !== "TEZ") {
+          const tokenIndex = await priceContracts.findIndex((token:any) => token.symbol === coinInputOne.metadata.symbol) 
+          setCoinInputOneUsd(amountOne * priceContracts[tokenIndex].currentPrice)
+	} else {
+          setCoinInputOneUsd(amountOne * price);
+	}
+      } catch (error) {
+	if (coinInputOne.metadata.symbol === "TEZ") {
+          console.log();
+	} else {
+          console.log("skipped") 
+	}  	
+      }
+    }
+    updatePrice();
+  }, [coinInputOne, amountOne])
+
+ useEffect(() => {
+   const updatePrice = async () => {
+      try {
+	if (coinInputTwo.metadata.symbol !== "TEZ") {
+        const tokenIndex = await priceContracts.findIndex((token:any) => token.symbol === coinInputTwo.metadata.symbol) 
+        setCoinInputTwoUsd(amountTwo * priceContracts[tokenIndex].currentPrice)
+	} else {
+          setCoinInputTwoUsd(amountTwo * price);
+	}
+      } catch (error) {
+        if (coinInputTwo.metadata.symbol === "TEZ") {
+          console.log();
+	} else {
+          console.log("skipped") 
+	}  	
+      }
+    }  
+    updatePrice();
+  }, [coinInputTwo, amountTwo])
 
   return (
   <>
