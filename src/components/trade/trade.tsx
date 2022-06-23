@@ -20,8 +20,8 @@ import { tokenPriceOne } from '../../utils/wallet/wallet';
 import CoinPopup from './coin-popup';
 import Confirm from './confirm';
 
-export default function TradeBox({option, blocks, update, setUpdate, blockType} : {option:any,
-  blocks:any, update:boolean, setUpdate:any, blockType:any}) {
+export default function TradeBox({option, blocks, update, setUpdate, blockType, slipp} : {option:any,
+  blocks:any, update:boolean, setUpdate:any, blockType:any, slipp:number}) {
   const [tradeSelect, setTradeSelect] = useState<number>();
   const [popupOne, setPopupOne] = useState<boolean>(false);
   const [popupTwo, setPopupTwo] = useState<boolean>(false);
@@ -135,7 +135,7 @@ export default function TradeBox({option, blocks, update, setUpdate, blockType} 
          <Confirm inputOne={coinInputOne} inputTwo={coinInputTwo}
 	   inputOneUsd={coinInputOneUsd} inputTwoUsd={coinInputTwoUsd}
 	   OneAmount={amountOne} TwoAmount={amountTwo} popupStatus={confirm} setPopupStatus={setConfirm}
-	   tradeOption={option} />  
+	   tradeOption={option} priceUpdate={update} slippage={slipp} />  
        </div>
      </>
    )}

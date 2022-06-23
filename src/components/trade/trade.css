@@ -535,7 +535,7 @@ font-weight: 600;
     max-width: 360px;
     animation: fadein 0.4s;
     height: 100%;
-    max-height: 540px;
+    max-height: 420px;
 }
 
 .confirm-component-header-container {
@@ -562,6 +562,62 @@ font-weight: 600;
 .confirm-component-amount-container {
  display: flex;
  flex-direction: column;
- padding-top: 60px;
+ padding-top: 20px;
 }
 
+.confirm-component-final-amount-container {
+
+}
+.confirm-component-final-amount {
+    color: #d8d8d8;
+    font-size: 28px;
+        font-weight: 600;
+	font-family: Arial ;
+}
+
+.confirm-component-transaction-container {
+
+}
+
+.confirm-component-price-status-container {
+	padding-top: 14px;
+}
+
+.confirm-component-transaction-details-wrapper {
+padding-top: 34px;
+}
+
+.confirm-component-transaction-details-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 20px;
+    border: 1px solid #3d3d3d;
+    z-index: 1;
+    width: initial;
+    transition: height 1s ease 0s;
+    padding: 14px;
+    height: 18px;
+    transition: .5s;
+}
+
+.confirm-component-transaction-slippage-container {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.confirm-component-transaction-slippage-tag {
+    font-size: 15px;
+    font-weight: 600;
+        color: #d8d8d8;
+}
+
+.confirm-component-transaction-slippage {
+	color: #3d3d3d;
+}
+
+.confirm-component-transaction-button-container {
+	padding-top: 30px;
+}

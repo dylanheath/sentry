@@ -61,7 +61,7 @@ export default function Trade({blockNumber, type}: {blockNumber:number, type:any
 	   </div>
 	 </div>
          <div className="trade-component-wrapper">
-	   <TradeBox option={id} blockType={type} blocks={blockNumber} update={updatePriceStatus} setUpdate={setUpdatePriceStatus} /> 
+	   <TradeBox slipp={slippage} option={id} blockType={type} blocks={blockNumber} update={updatePriceStatus} setUpdate={setUpdatePriceStatus} /> 
 	 </div>
 
          </>
