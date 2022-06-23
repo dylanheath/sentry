@@ -18,12 +18,14 @@ import { tokenPriceOne } from '../../utils/wallet/wallet';
 
 // components
 import CoinPopup from './coin-popup';
+import Confirm from './confirm';
 
 export default function TradeBox({option, blocks, update, setUpdate, blockType} : {option:any,
   blocks:any, update:boolean, setUpdate:any, blockType:any}) {
   const [tradeSelect, setTradeSelect] = useState<number>();
   const [popupOne, setPopupOne] = useState<boolean>(false);
   const [popupTwo, setPopupTwo] = useState<boolean>(false);
+  const [confirm, setConfirm] = useState<boolean>(false);
   const [settingPopup, setSettingsPopup] = useState<boolean>(false);
   const [coinInputOneUsd, setCoinInputOneUsd] = useState<number>(0);
   const [coinInputTwoUsd, setCoinInputTwoUsd] = useState<number>(0);
@@ -98,7 +100,7 @@ export default function TradeBox({option, blocks, update, setUpdate, blockType} 
 	if (coinInputOne.metadata.symbol === "TEZ") {
           console.log();
 	} else {
-          console.log("skipped") 
+          console.log(error) 
 	}  	
       }
     }
@@ -118,7 +120,7 @@ export default function TradeBox({option, blocks, update, setUpdate, blockType} 
         if (coinInputTwo.metadata.symbol === "TEZ") {
           console.log();
 	} else {
-          console.log("skipped") 
+          console.log(error) 
 	}  	
       }
     }  
@@ -127,6 +129,16 @@ export default function TradeBox({option, blocks, update, setUpdate, blockType} 
 
   return (
   <>
+   {confirm === false && (
+     <> 
+       <div className="trade-component-model-container">
+         <Confirm inputOne={coinInputOne} inputTwo={coinInputTwo}
+	   inputOneUsd={coinInputOneUsd} inputTwoUsd={coinInputTwoUsd}
+	   OneAmount={amountOne} TwoAmount={amountTwo} popupStatus={confirm} setPopupStatus={setConfirm}
+	   tradeOption={option} />  
+       </div>
+     </>
+   )}
    {popupOne == true && popupTwo == false && (
      <>
        <div className="trade-component-model-container">
@@ -158,7 +170,7 @@ export default function TradeBox({option, blocks, update, setUpdate, blockType} 
             <input className="trade-component-input" defaultValue={(0).toFixed(2)} onChange={(e) => setAmountOne(Number(e.target.value))} />
             <button className="trade-component-coin-select-container" onClick={() =>setPopupOne(true)}>
 	      <div className="trade-component-coin-select-image-container">
-	        <img className="trade-component-coin-select-image" src={coinInputOne.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${coinInputOne.metadata.thumbnailUri.slice(7)}` : coinInputOne.metadata.thumbnailUri} />
+	        <img className="trade-component-coin-select-image" key={coinInputOne.metadata.thumbnailUri} src={coinInputOne.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${coinInputOne.metadata.thumbnailUri.slice(7)}` : coinInputOne.metadata.thumbnailUri} />
 	      </div>
 	      <p className="trade-component-coin-name">{coinInputOne.metadata.symbol}</p>
 	      <div className="trade-component-coin-select-arrow-container">
@@ -181,7 +193,7 @@ export default function TradeBox({option, blocks, update, setUpdate, blockType} 
             <input className="trade-component-input" defaultValue={(0).toFixed(2)} onChange={(e) => setAmountTwo(Number(e.target.value))} />
 	    <button className="trade-component-coin-select-container" onClick={() => setPopupTwo(true)}>
 	      <div className="trade-component-coin-select-image-container">
-	        <img className="trade-component-coin-select-image" src={coinInputTwo.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${coinInputTwo.metadata.thumbnailUri.slice(7)}` : coinInputTwo.metadata.thumbnailUri} />
+	        <img className="trade-component-coin-select-image" key={coinInputTwo.metadata.thumbnailUri} src={coinInputTwo.metadata.thumbnailUri.includes("ipfs://") ? `https://ipfs.io/ipfs/${coinInputTwo.metadata.thumbnailUri.slice(7)}` : coinInputTwo.metadata.thumbnailUri} />
 	      </div>
 	      <p className="trade-component-coin-name">{coinInputTwo.metadata.symbol}</p>
 	      <div className="trade-component-coin-select-arrow-container">
