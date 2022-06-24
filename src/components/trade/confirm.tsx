@@ -78,7 +78,7 @@ export default function Confirm({inputOne, inputTwo, inputOneUsd, inputTwoUsd, O
 	 </div>
        </div>
        <div className="confirm-component-transaction-button-container">
-         <button className="trade-component-complete-button">Swap</button>
+         <button className="trade-component-complete-button">{tradeOption === "swap" ? "Swap" : tradeOption === "send" ? "Send" : tradeOption === "liquidity" ? "Add Liquidity" : ""}</button>
        </div>
      </div> 
   )
