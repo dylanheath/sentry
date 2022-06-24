@@ -16,6 +16,7 @@ import Trade from './pages/trade';
 import Explore from './pages/explore';
 import Markets from './pages/markets';
 import Market from './pages/market';
+import Portfolio from './pages/portfolio';
 
 // context
 import {UserContext} from './utils/context/context';
@@ -133,6 +134,7 @@ function App() {
 		  <Route path="/explore" element={<Explore />} />
 		  <Route path="/market" element={<Markets />} />
 		  <Route path="/market/:id" element={<Market />} />
+		  <Route path="/portfolio:id" element={<Portfolio />} />
 	        </Routes>
 	      </div>
 	    </div>
