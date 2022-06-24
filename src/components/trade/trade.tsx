@@ -129,7 +129,7 @@ export default function TradeBox({option, blocks, update, setUpdate, blockType, 
 
   return (
   <>
-   {confirm === false && (
+   {confirm === true && (
      <> 
        <div className="trade-component-model-container">
          <Confirm inputOne={coinInputOne} inputTwo={coinInputTwo}
