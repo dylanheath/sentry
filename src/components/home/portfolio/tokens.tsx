@@ -27,8 +27,10 @@ export default function Tokens() {
 	    result.tokens.map((token:any) => {
 	      // @ts-ignore
               const FindToken = result.list.contracts.find(tk => tk.symbol === token.token.metadata.symbol);
-	      const TokenAmount = token.balance.slice(0, Number(- token.token.metadata.decimals)) + "." + token.balance.slice(Number(- token.token.metadata.decimals));
-              CurrencyTotal += FindToken.currentPrice * Number(TokenAmount);
+	      if (FindToken) {
+	        const TokenAmount = token.balance.slice(0, Number(- token.token.metadata.decimals)) + "." + token.balance.slice(Number(- token.token.metadata.decimals));
+                CurrencyTotal += FindToken.currentPrice * Number(TokenAmount);
+	      }  
 	    })
             setTokensTotalCurrency(CurrencyTotal);
          })
