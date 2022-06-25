@@ -134,7 +134,8 @@ function App() {
 		  <Route path="/explore" element={<Explore />} />
 		  <Route path="/market" element={<Markets />} />
 		  <Route path="/market/:id" element={<Market />} />
-		  <Route path="/portfolio:id" element={<Portfolio />} />
+		  <Route path="/portfolio/:id" element={<Portfolio />} />
+		  <Route path="/portfolio" element={<Portfolio />} />
 	        </Routes>
 	      </div>
 	    </div>

@@ -1,0 +1,16 @@
+.Portfolio {
+	text-align: left;
+}
+
+.portfolio-header {
+	    color: #d8d8d8;
+    font-size: 24px;
+}
+
+.portfolio-description {
+	font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-top: 4px;
+    color: #3d3d3d;
+}

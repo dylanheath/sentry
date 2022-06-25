@@ -52,11 +52,13 @@ export default function Assets() {
       const getTokens = await tokens(address) 
         .then((result:any) => {
 	  result.tokens.map((token:any) => {
-	    // @ts-ignore
-            const FindToken = result.list.contracts.find(tk => tk.symbol === token.token.metadata.symbol);
-	    const TokenAmount = token.balance.slice(0, Number(- token.token.metadata.decimals)) + "." + token.balance.slice(Number(- token.token.metadata.decimals));
-	    TokensTotalCurrency += FindToken.currentPrice * Number(TokenAmount);
-            CurrencyTotal += FindToken.currentPrice * Number(TokenAmount);
+	    console.log(token) 
+              const FindToken = result.list.contracts.find((tk:any) => tk.symbol === token.token.metadata.symbol);
+	      if (FindToken) {
+	      const TokenAmount = token.balance.slice(0, Number(- token.token.metadata.decimals)) + "." + token.balance.slice(Number(- token.token.metadata.decimals));
+	      TokensTotalCurrency += FindToken.currentPrice * Number(TokenAmount);
+              CurrencyTotal += FindToken.currentPrice * Number(TokenAmount);
+	      }
 	  })
           setTokensCurrency(TokensTotalCurrency);
         })
