@@ -14,6 +14,7 @@ import { xtzPrice } from '../../../utils/price/xtz';
 export default function Tokens() {
   const [tokensTotalCurrency, setTokensTotalCurrency] = useState<number>(0);
   const [price, setPrice] = useState<number>(0)
+  const [userTokens, setUserTokens] = useState<any>([]);
 
   useEffect(() => {
     const ownedTokens = async () => {
@@ -22,6 +23,7 @@ export default function Tokens() {
        const activeAccount = await getActiveAccount();
        const address = await getAddress();
        if (activeAccount) {
+       let sortedUsertokens: any = [];
        const getTokens = await tokens(address) 
           .then((result:any) => {
 	    result.tokens.map((token:any) => {
@@ -30,8 +32,10 @@ export default function Tokens() {
 	      if (FindToken) {
 	        const TokenAmount = token.balance.slice(0, Number(- token.token.metadata.decimals)) + "." + token.balance.slice(Number(- token.token.metadata.decimals));
                 CurrencyTotal += FindToken.currentPrice * Number(TokenAmount);
+		sortedUsertokens.push(token);
 	      }  
 	    })
+	    setUserTokens(sortedUsertokens);
             setTokensTotalCurrency(CurrencyTotal);
          })
         .catch(() => {
@@ -68,7 +72,13 @@ export default function Tokens() {
       <p className="portfolio-component-balance-amount">${(price * tokensTotalCurrency).toFixed(2)}</p>
       <div className="portfolio-component-assets-container">
         <div className="portfolio-component-tokens-container">
-
+	  {userTokens.length > 1 && (
+	    <>
+	      {userTokens.map((token:any) => {
+                <p>{token.token.metadata.symbol}</p>
+	      })}
+	    </>
+	  )}
 	</div>
 	<div className="portfolio-component-tokens-options-container">
           <Link className="portfolio-component-tokens-option" to={`/trade/swap`}>

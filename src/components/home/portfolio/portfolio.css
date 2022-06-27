@@ -248,6 +248,11 @@ border: 1px solid #3d3d3d;
     height: 166px;
 }
 
+.portfolio-component-tokens-grid {
+	display: grid;
+
+}
+
 .portfolio-component-tokens-option {
 	    display: flex;
     align-items: left;
