@@ -69,9 +69,6 @@ export default function Market() {
             <p className="market-component-prices-name">BTC - USD</p>
 	    <div className="market-component-price-update-status-container">
 	      <p className="market-component-price">${(btcData.price).toLocaleString()}</p>
-	      <div className="market-component-price-update-status-wrapper">
-                <div className="market-component-price-update-status"></div>
-	      </div>
 	    </div>
 	  </div>
 	  <p className="market-component-price-full-name">Bitcoin</p>
@@ -93,9 +90,6 @@ export default function Market() {
             <p className="market-component-prices-name">ETH - USD</p>
 	    <div className="market-component-price-update-status-container">
 	      <p className="market-component-price">${(ethData.price).toLocaleString()}</p>
-	      <div className="market-component-price-update-status-wrapper">
-                <div className="market-component-price-update-status"></div>
-	      </div>
 	    </div>
 	  </div>
 	  <p className="market-component-price-full-name">Ethereum</p>

@@ -430,6 +430,20 @@ color: #b34714;
 	 align-items: center;
  }
 
+ .price-component-update-status-container {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    padding-top: 14px;
+ }
+
+ .price-component-update-status {
+        font-size: 15px;
+    color: #3d3d3d;
+    transition: 5s;
+    animation: .6s newblock;
+ }
+
 
 
 
