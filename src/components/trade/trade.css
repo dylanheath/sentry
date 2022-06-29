@@ -621,3 +621,40 @@ padding-top: 34px;
 .confirm-component-transaction-button-container {
 	padding-top: 30px;
 }
+
+.swap-icon path {
+	transition: .5s;
+}
+
+.swap-icon:hover path {
+	fill: #d8d8d8;
+	transition: .5s;
+}
+
+.swap-icon:hover {
+	-webkit-animation: rotate-90-cw 0.4s  both;
+	        animation: rotate-90-cw 0.4s both;
+
+}
+
+@-webkit-keyframes rotate-90-cw {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+@keyframes rotate-90-cw {
+  0% {
+    -webkit-transform: rotate(180);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
