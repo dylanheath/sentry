@@ -14,3 +14,10 @@
     margin-top: 4px;
     color: #3d3d3d;
 }
+
+.Top-portfolio-container {
+display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-gap: 16px;
+    margin-top: 30px;
+}
