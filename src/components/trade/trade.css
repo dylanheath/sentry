@@ -658,3 +658,20 @@ padding-top: 34px;
   }
 }
 
+
+.trade-component-converted-balance-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.trade-component-coin-balance {
+    padding-left: 4px;
+    font-size: 15px;
+    color: #3d3d3d;
+    padding-top: 12px;
+    transition: 5s;
+    animation: .6s newprice;
+}

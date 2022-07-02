@@ -185,7 +185,9 @@ export default function TradeBox({option, blocks, update, setUpdate, blockType, 
 	    </button>
 	  </div>
 	</div>
-	<p className="trade-component-converted-price" key={coinInputOneUsd}>${(coinInputOneUsd).toFixed(2)}</p>
+	<div className="trade-component-converted-balance-container">
+	  <p className="trade-component-converted-price" key={coinInputOneUsd}>${(coinInputOneUsd).toFixed(2)}</p>
+	</div>
       </div>
       <div className="trade-component-arrow-container">
         <div className="trade-component-arrow-wrapper" onClick={() => switchTokens()}>
