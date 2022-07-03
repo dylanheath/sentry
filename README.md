@@ -24,7 +24,7 @@ npm start
 
 ## Contribute
 
-Sentry is Open to Contributions, for every pull request make sure you include 
+Sentry is Open to Contributions, make sure your pull requests include the following
 - What you have Worked on or Working on
 - A detailed explanation of changes
 - Reason for these changes
