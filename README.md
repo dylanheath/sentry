@@ -2,7 +2,7 @@
 
 Sentry is a Tezos powered Portfolio, Payment & Assets management DAPP which allows you to have a 360° view on your Tokens, Farms, Liqudity & NFT's
 
-* Supports up to 8 Wallets.
+* Supports up to 8 Wallets
 * Safe & Secure using the BeaconSDK
 * Zero Transaction Fees
 * Supports Mobile Devices
