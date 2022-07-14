@@ -16,7 +16,7 @@ Sentry is a Tezos powered Portfolio, Payment & Assets management DAPP which allo
 ## Running from source
 
 ```
-git clone https://github.com/dylanheath/cen.git
+git clone https://github.com/dylanheath/sentry.git
 cd sentry
 npm install
 npm start
