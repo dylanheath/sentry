@@ -64,7 +64,15 @@ export default function Balance() {
     <div className="Balance-component">
       <div className="balance-container">
         <div className="balance-wrapper">
-          <p className="balance" key={balanceXTZ}>{balanceXTZ}</p>
+	  <div className="balance-row-container">
+	    <div className="balance-data-container">
+              <p className="balance" key={balanceXTZ}>{balanceXTZ}</p>
+	      <p className="balance-change">0%</p>
+	    </div>
+	    <div className="balance-time-option">
+
+	    </div>
+	  </div>
 	  <div className="balance-update-container">
 
 	  </div>

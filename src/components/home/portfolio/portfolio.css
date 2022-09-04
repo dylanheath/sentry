@@ -367,3 +367,29 @@ font-size: 12px;
     font-weight: 500;
     color: rgb(70, 70, 70);
 }
+
+.balance {
+ color: white;
+ font-weight: 600;
+ font-size: 32px;
+}
+
+.balance-row-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.balance-data-container {
+	display: flex;
+	flex-direction: row;
+	gap: 14px;
+	justify-content: center;
+}
+
+.balance-change {
+	    color: #3d3d3d;
+	font-size: 18px;
+	font-weight: 500;
+	padding-top: 2px;
+}
